@@ -1,0 +1,1747 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#FFF"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png"><link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" type="application/rss+xml" title="键盘敲烂，月薪过万，冲！" href="https://aaaa8880788.github.io/rss.xml"><link rel="alternate" type="application/atom+xml" title="键盘敲烂，月薪过万，冲！" href="https://aaaa8880788.github.io/atom.xml"><link rel="alternate" type="application/json" title="键盘敲烂，月薪过万，冲！" href="https://aaaa8880788.github.io/feed.json"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="/css/app.css?v=0.2.5"><meta name="keywords" content="Vue3,TypeScript,Element Plus"><link rel="canonical" href="https://aaaa8880788.github.io/vue/Vue3+Element%20Plus%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/"><title>Vue3+Element Plus组件二次封装 - Vue | 呆头鸭 = 键盘敲烂，月薪过万，冲！</title><meta name="generator" content="Hexo 6.3.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">Vue3+Element Plus组件二次封装</h1><div class="meta"><span class="item" title="创建时间：2024-03-02 10:52:21"><span class="icon"><i class="ic i-calendar"></i> </span><span class="text">发表于</span> <time itemprop="dateCreated datePublished" datetime="2024-03-02T10:52:21+08:00">2024-03-02</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span class="text">本文字数</span> <span>52k</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span class="text">阅读时长</span> <span>47 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span> <span class="line"></span> <span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">呆头鸭</a></li></ul><ul class="right"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div id="imgs" class="pjax"><ul><li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/20179998b27b569ef4634293516e8d09.jpg"></li><li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/a956521148df0241038d6f6838a9806f.jpg"></li><li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/62d006663966c7ffbe93715d7d26acae.jpg"></li><li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/a76ca77286f858f47f8d2b08232bdef1.jpg"></li><li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/c22bb7736559a7554506b05203018145.jpg"></li><li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/7dad57904e56f14df7975109aaf03bc2.jpg"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"/><use xlink:href="#gentle-wave" x="48" y="3"/><use xlink:href="#gentle-wave" x="48" y="5"/><use xlink:href="#gentle-wave" x="48" y="7"/></g></svg></div><main><div class="inner"><div id="main" class="pjax"><div class="article wrap"><div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i> <span><a href="/">首页</a></span><i class="ic i-angle-right"></i> <span class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/vue/" itemprop="item" rel="index" title="分类于 Vue"><span itemprop="name">Vue</span></a><meta itemprop="position" content="1"></span></div><article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN"><link itemprop="mainEntityOfPage" href="https://aaaa8880788.github.io/vue/Vue3+Element%20Plus%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="image" content="/images/avatar.jpg"><meta itemprop="name" content="呆头鸭"><meta itemprop="description" content=", 每天进步一点点~"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="键盘敲烂，月薪过万，冲！"></span><div class="body md" itemprop="articleBody"><h1 id="element-plus组件二次封装"><a class="anchor" href="#element-plus组件二次封装">#</a> Element Plus 组件二次封装</h1><h1 id="前言"><a class="anchor" href="#前言">#</a> 前言</h1><p>直至今天，看了一下别人写的代码，才发现以前自己写的代码太垃圾，所以在这次做的一个后台项目中，采用他的代码风格，怎么说呢，复用性特别好，封装的很好，学到很多，所以记录一下思路，我认为这个封装思路是真的很棒，写第一个页面的时候可能会麻烦一些，但是后面只要是相似的页面，事半功倍，直接 CV 改配置项就好了，是真的顶，记录一下，学习一下，我这里用的是 vue3+ts</p><h1 id="form表单的封装"><a class="anchor" href="#form表单的封装">#</a> Form 表单的封装</h1><h2 id="简述"><a class="anchor" href="#简述">#</a> 简述</h2><p>这里是 Form 表单部分，下面是完整的思路，最后有附上完整的代码，大佬可以直接看完整的代码就能看懂了，小白们跟着我的思路估计能看懂....</p><h2 id="正常的使用"><a class="anchor" href="#正常的使用">#</a> 正常的使用</h2><p>如果我们正常使用组件库里面的组件会是这样的</p><p><img data-src="https://fastly.jsdelivr.net/gh/aaaa8880788/duck-img//blog/Vue/Element%20Plus%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/image-20220506153055850.png" alt="image-20220506153055850"></p><p>代码如下</p><p>role.vue 页面组件</p><pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;role&quot;&gt;
+    &lt;el-form&gt;
+      &lt;el-form-item label=&quot;用户id&quot;&gt;
+        &lt;el-input placeholder=&quot;请输入用户id&quot;&gt;&lt;/el-input&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item label=&quot;用户名&quot;&gt;
+        &lt;el-input placeholder=&quot;请输入用户名&quot;&gt;&lt;/el-input&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item label=&quot;真实姓名&quot;&gt;
+        &lt;el-input placeholder=&quot;请输入真实姓名&quot;&gt;&lt;/el-input&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item label=&quot;用户名&quot;&gt;
+        &lt;el-input placeholder=&quot;请输入用户名&quot;&gt;&lt;/el-input&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item label=&quot;电话号码&quot;&gt;
+        &lt;el-input placeholder=&quot;请输入电话号码&quot;&gt;&lt;/el-input&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item label=&quot;用户状态&quot;&gt;
+        &lt;el-select placeholder=&quot;请选择用户状态&quot;&gt;
+          &lt;el-option label=&quot;禁用&quot; value=&quot;0&quot;&gt;&lt;/el-option&gt;
+          &lt;el-option label=&quot;启用&quot; value=&quot;1&quot;&gt;&lt;/el-option&gt;
+        &lt;/el-select&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item label=&quot;创建时间&quot;&gt;
+        &lt;el-date-picker
+          startPlaceholder=&quot;开始时间&quot;
+          endPlaceholder=&quot;结束时间&quot;
+          type=&quot;daterange&quot;
+        &gt;&lt;/el-date-picker&gt;
+      &lt;/el-form-item&gt;
+    &lt;/el-form&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;&lt;/script&gt;
+
+&lt;style scoped lang=&quot;less&quot;&gt;&lt;/style&gt;
+
+</code></pre><p>这时我们可以加点样式让他变得好看，并且布局也变一变就可以变成这样，当然样式布局可以自定义</p><p><img data-src="https://fastly.jsdelivr.net/gh/aaaa8880788/duck-img//blog/Vue/Element%20Plus%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/image-20220506153107353.png" alt="image-20220506153107353"></p><p>代码如下</p><p>role.vue 页面组件</p><pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;role&quot;&gt;
+    &lt;el-form labelWidth=&quot;120px&quot;&gt;
+      &lt;el-row&gt;
+        &lt;el-col :span=&quot;8&quot;&gt;
+          &lt;el-form-item
+            label=&quot;用户id&quot;
+            :style=&quot;&#123;
+              padding: '10px 20px'
+            &#125;&quot;
+          &gt;
+            &lt;el-input placeholder=&quot;请输入用户id&quot;&gt;&lt;/el-input&gt;
+          &lt;/el-form-item&gt;
+        &lt;/el-col&gt;
+        &lt;el-col :span=&quot;8&quot;&gt;
+          &lt;el-form-item
+            label=&quot;用户名&quot;
+            :style=&quot;&#123;
+              padding: '10px 20px'
+            &#125;&quot;
+          &gt;
+            &lt;el-input placeholder=&quot;请输入用户名&quot;&gt;&lt;/el-input&gt;
+          &lt;/el-form-item&gt;
+        &lt;/el-col&gt;
+        &lt;el-col :span=&quot;8&quot;&gt;
+          &lt;el-form-item
+            label=&quot;真实姓名&quot;
+            :style=&quot;&#123;
+              padding: '10px 20px'
+            &#125;&quot;
+          &gt;
+            &lt;el-input placeholder=&quot;请输入真实姓名&quot;&gt;&lt;/el-input&gt;
+          &lt;/el-form-item&gt;
+        &lt;/el-col&gt;
+        &lt;el-col :span=&quot;8&quot;&gt;
+          &lt;el-form-item
+            label=&quot;电话号码&quot;
+            :style=&quot;&#123;
+              padding: '10px 20px'
+            &#125;&quot;
+          &gt;
+            &lt;el-input placeholder=&quot;请输入电话号码&quot;&gt;&lt;/el-input&gt;
+          &lt;/el-form-item&gt;
+        &lt;/el-col&gt;
+        &lt;el-col :span=&quot;8&quot;&gt;
+          &lt;el-form-item
+            label=&quot;用户状态&quot;
+            :style=&quot;&#123;
+              padding: '10px 20px'
+            &#125;&quot;
+          &gt;
+            &lt;el-select placeholder=&quot;请选择用户状态&quot;&gt;
+              &lt;el-option label=&quot;禁用&quot; value=&quot;0&quot;&gt;&lt;/el-option&gt;
+              &lt;el-option label=&quot;启用&quot; value=&quot;1&quot;&gt;&lt;/el-option&gt;
+            &lt;/el-select&gt;
+          &lt;/el-form-item&gt;
+        &lt;/el-col&gt;
+        &lt;el-col :span=&quot;8&quot;&gt;
+          &lt;el-form-item
+            label=&quot;创建时间&quot;
+            :style=&quot;&#123;
+              padding: '10px 20px'
+            &#125;&quot;
+          &gt;
+            &lt;el-date-picker
+              startPlaceholder=&quot;开始时间&quot;
+              endPlaceholder=&quot;结束时间&quot;
+              type=&quot;daterange&quot;
+            &gt;&lt;/el-date-picker&gt;
+          &lt;/el-form-item&gt;
+        &lt;/el-col&gt;
+      &lt;/el-row&gt;
+    &lt;/el-form&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;&lt;/script&gt;
+
+&lt;style scoped lang=&quot;less&quot;&gt;
+.el-form-item &#123;
+  margin-top: 18px;
+&#125;
+.el-select &#123;
+  width: 100%;
+&#125;
+&lt;/style&gt;
+
+</code></pre><h2 id="开始封装1"><a class="anchor" href="#开始封装1">#</a> 开始封装①</h2><p>这时我们就可以开始封装了，如果我们可以通过传配置项的方法来控制样式和 form 表单项的类型和个数的话，是不是变得很方便，下次直接传配置项用就好了？话不多说直接上图上代码</p><p>可以看到效果一样，代码却简洁了，模板里面不会出现大量重复的代码了</p><p><img data-src="https://fastly.jsdelivr.net/gh/aaaa8880788/duck-img//blog/Vue/Element%20Plus%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/image-20220506153117544.png" alt="image-20220506153117544"></p><p>role.vue 页面组件</p><pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;role&quot;&gt;
+    &lt;el-form :labelWidth=&quot;searchFormConfig.labelWidth&quot;&gt;
+      &lt;el-row&gt;
+        &lt;template v-for=&quot;item in searchFormConfig.formItems&quot; :key=&quot;item.label&quot;&gt;
+          &lt;el-col :span=&quot;8&quot;&gt;
+            &lt;el-form-item
+              :label=&quot;item.label&quot;
+              :style=&quot;searchFormConfig.itemStyle&quot;
+            &gt;
+              &lt;template
+                v-if=&quot;item.type === 'input' || item.type === 'password'&quot;
+              &gt;
+                &lt;el-input 
+                    :placeholder=&quot;item.placeholder&quot; 
+                    :show-password=&quot;item.type === 'password'&quot;
+                &gt;&lt;/el-input&gt;
+              &lt;/template&gt;
+              &lt;template v-else-if=&quot;item.type === 'select'&quot;&gt;
+                &lt;el-select :placeholder=&quot;item.placeholder&quot;&gt;
+                  &lt;el-option
+                    v-for=&quot;option in item.options&quot;
+                    :key=&quot;option.value&quot;
+                    :label=&quot;option.label&quot;
+                    :value=&quot;option.value&quot;
+                  &gt;&lt;/el-option&gt;
+                &lt;/el-select&gt;
+              &lt;/template&gt;
+              &lt;template v-else&gt;
+                &lt;el-date-picker v-bind=&quot;item.otherOptions&quot;&gt;&lt;/el-date-picker&gt;
+              &lt;/template&gt;
+            &lt;/el-form-item&gt;
+          &lt;/el-col&gt;
+        &lt;/template&gt;
+      &lt;/el-row&gt;
+    &lt;/el-form&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+// 定义表单配置项
+const searchFormConfig = &#123;
+  formItems: [
+    &#123;
+      type: 'input',
+      label: '用户id',
+      placeholder: '请输入用户id'
+    &#125;,
+    &#123;
+      type: 'input',
+      label: '用户名',
+      placeholder: '请输入用户名'
+    &#125;,
+    &#123;
+      type: 'input',
+      label: '真实姓名',
+      placeholder: '请输入真实姓名'
+    &#125;,
+    &#123;
+      type: 'input',
+      label: '电话号码',
+      placeholder: '请输入电话号码'
+    &#125;,
+    &#123;
+      type: 'select',
+      label: '用户状态',
+      placeholder: '请选择用户状态',
+      options: [
+        &#123;
+          label: '禁用',
+          value: 0
+        &#125;,
+        &#123;
+          label: '启用',
+          value: 1
+        &#125;
+      ]
+    &#125;,
+    &#123;
+      type: 'datepicker',
+      label: '创建时间',
+      otherOptions: &#123;
+        startPlaceholder: '开始时间',
+        endPlaceholder: '结束时间',
+        type: 'daterange',
+        'unlink-panels': true
+      &#125;
+    &#125;
+  ],
+  labelWidth: '120px',
+  itemStyle: &#123;
+    padding: '10px 20px'
+  &#125;,
+  itemColLayout: &#123;
+    span: 8
+  &#125;
+&#125;
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;less&quot;&gt;
+.el-form-item &#123;
+  margin-top: 18px;
+&#125;
+.el-select &#123;
+  width: 100%;
+&#125;
+&lt;/style&gt;
+
+</code></pre><h2 id="开始封装2"><a class="anchor" href="#开始封装2">#</a> 开始封装②</h2><p>这时它复用的锥形已经有了，我们可以将配置项抽出去，并给它一些类型限制，把这部分使用表单的代码抽出去，封装成 form 组件，这样之后我们在用的时候，直接用这个组件然后给它传配置项就可以了</p><p>1. 配置项类型限制文件（不用 ts 的话就没有，不想限制全部给 any 类型随意，我这里是为了让代码严谨一丢丢哈哈）</p><figure class="highlight typescript"><figcaption data-lang="typescript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">type</span> <span class="token class-name">IFormType</span> <span class="token operator">=</span> <span class="token string">'input'</span> <span class="token operator">|</span> <span class="token string">'password'</span> <span class="token operator">|</span> <span class="token string">'select'</span> <span class="token operator">|</span> <span class="token string">'datepicker'</span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">interface</span> <span class="token class-name">IFormOption</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>  label<span class="token operator">:</span> <span class="token builtin">string</span></pre></td></tr><tr><td data-num="5"></td><td><pre>  value<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token builtin">number</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="7"></td><td><pre></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">IFormItem</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>  type<span class="token operator">:</span> IFormType <span class="token comment">// 输入框类型</span></pre></td></tr><tr><td data-num="10"></td><td><pre>  label<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// 输入框标题</span></pre></td></tr><tr><td data-num="11"></td><td><pre>  placeholder<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">any</span> <span class="token comment">// 输入框默认显示内容</span></pre></td></tr><tr><td data-num="12"></td><td><pre>  <span class="token comment">// 针对 select</span></pre></td></tr><tr><td data-num="13"></td><td><pre>  options<span class="token operator">?</span><span class="token operator">:</span> IFormOption<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token comment">// 选择器的可选子选项</span></pre></td></tr><tr><td data-num="14"></td><td><pre>  <span class="token comment">// 针对特殊属性</span></pre></td></tr><tr><td data-num="15"></td><td><pre>  otherOptions<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">any</span></pre></td></tr><tr><td data-num="16"></td><td><pre></pre></td></tr><tr><td data-num="17"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="18"></td><td><pre></pre></td></tr><tr><td data-num="19"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">IForm</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>  formItems<span class="token operator">:</span> IFormItem<span class="token punctuation">[</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="21"></td><td><pre>  labelWidth<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span></pre></td></tr><tr><td data-num="22"></td><td><pre>  itemStyle<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">any</span></pre></td></tr><tr><td data-num="23"></td><td><pre>  itemColLayout<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">any</span></pre></td></tr><tr><td data-num="24"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>2. 配置项文件</p><figure class="highlight typescript"><figcaption data-lang="typescript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> IForm <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'@/base-ui/form/type'</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">const</span> searchFormConfig<span class="token operator">:</span> IForm <span class="token operator">=</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  formItems<span class="token operator">:</span> <span class="token punctuation">[</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>      type<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="6"></td><td><pre>      label<span class="token operator">:</span> <span class="token string">'用户id'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="7"></td><td><pre>      placeholder<span class="token operator">:</span> <span class="token string">'请输入用户id'</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="9"></td><td><pre>    <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>      type<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="11"></td><td><pre>      label<span class="token operator">:</span> <span class="token string">'用户名'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="12"></td><td><pre>      placeholder<span class="token operator">:</span> <span class="token string">'请输入用户名'</span></pre></td></tr><tr><td data-num="13"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="14"></td><td><pre>    <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>      type<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="16"></td><td><pre>      label<span class="token operator">:</span> <span class="token string">'真实姓名'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="17"></td><td><pre>      placeholder<span class="token operator">:</span> <span class="token string">'请输入真实姓名'</span></pre></td></tr><tr><td data-num="18"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="19"></td><td><pre>    <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>      type<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="21"></td><td><pre>      label<span class="token operator">:</span> <span class="token string">'电话号码'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="22"></td><td><pre>      placeholder<span class="token operator">:</span> <span class="token string">'请输入电话号码'</span></pre></td></tr><tr><td data-num="23"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="24"></td><td><pre>    <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="25"></td><td><pre>      type<span class="token operator">:</span> <span class="token string">'select'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="26"></td><td><pre>      label<span class="token operator">:</span> <span class="token string">'用户状态'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="27"></td><td><pre>      placeholder<span class="token operator">:</span> <span class="token string">'请选择用户状态'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="28"></td><td><pre>      options<span class="token operator">:</span> <span class="token punctuation">[</span></pre></td></tr><tr><td data-num="29"></td><td><pre>        <span class="token punctuation">&#123;</span> label<span class="token operator">:</span> <span class="token string">'启用'</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="30"></td><td><pre>        <span class="token punctuation">&#123;</span> label<span class="token operator">:</span> <span class="token string">'禁用'</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="31"></td><td><pre>      <span class="token punctuation">]</span></pre></td></tr><tr><td data-num="32"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="33"></td><td><pre>    <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="34"></td><td><pre>      type<span class="token operator">:</span> <span class="token string">'datepicker'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="35"></td><td><pre>      label<span class="token operator">:</span> <span class="token string">'创建时间'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="36"></td><td><pre>      otherOptions<span class="token operator">:</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="37"></td><td><pre>        startPlaceholder<span class="token operator">:</span> <span class="token string">'开始时间'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="38"></td><td><pre>        endPlaceholder<span class="token operator">:</span> <span class="token string">'结束时间'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="39"></td><td><pre>        type<span class="token operator">:</span> <span class="token string">'daterange'</span></pre></td></tr><tr><td data-num="40"></td><td><pre>      <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="41"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="42"></td><td><pre>  <span class="token punctuation">]</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="43"></td><td><pre>  labelWidth<span class="token operator">:</span> <span class="token string">'120px'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="44"></td><td><pre>  itemColLayout<span class="token operator">:</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="45"></td><td><pre>    span<span class="token operator">:</span> <span class="token number">8</span></pre></td></tr><tr><td data-num="46"></td><td><pre>  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="47"></td><td><pre>  itemStyle<span class="token operator">:</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="48"></td><td><pre>    padding<span class="token operator">:</span> <span class="token string">'10px 20px'</span></pre></td></tr><tr><td data-num="49"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="50"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>3.form 表单文件</p><p>注意：在这里，我将 labelWidth，itemColLayout，itemStyle 设置了默认值，所以我上面的那些样式配置项可以不传，默认就是我设置的那些值，如果需要别的样式可以传入修改，不要样式可以传个空进去，这里我还加了两个插槽，增加可扩展性</p><pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;header&quot;&gt;
+    &lt;slot name=&quot;header&quot;&gt; &lt;/slot&gt;
+  &lt;/div&gt;
+  &lt;el-form ref=&quot;ruleFormRef&quot; :labelWidth=&quot;labelWidth&quot;&gt;
+    &lt;el-row&gt;
+      &lt;template v-for=&quot;item in formItems&quot; :key=&quot;item.label&quot;&gt;
+        &lt;el-col v-bind=&quot;itemColLayout&quot;&gt;
+          &lt;el-form-item
+            v-if=&quot;!item.isHidden&quot;
+            :label=&quot;item.label&quot;
+            :style=&quot;itemStyle&quot;
+            :prop=&quot;item.field&quot;
+          &gt;
+            &lt;template v-if=&quot;item.type === 'input' || item.type === 'password'&quot;&gt;
+              &lt;el-input
+                :placeholder=&quot;item.placeholder&quot;
+                :show-password=&quot;item.type === 'password'&quot;
+              &gt;&lt;/el-input&gt;
+            &lt;/template&gt;
+            &lt;template v-else-if=&quot;item.type === 'select'&quot;&gt;
+              &lt;el-select :placeholder=&quot;item.placeholder&quot;&gt;
+                &lt;el-option
+                  v-for=&quot;option in item.options&quot;
+                  :key=&quot;option.label&quot;
+                  :label=&quot;option.label&quot;
+                  :value=&quot;option.value&quot;
+                &gt;&lt;/el-option&gt;
+              &lt;/el-select&gt;
+            &lt;/template&gt;
+            &lt;template v-if=&quot;item.type === 'datepicker'&quot;&gt;
+              &lt;el-date-picker v-bind=&quot;item.otherOptions&quot;&gt;&lt;/el-date-picker&gt;
+            &lt;/template&gt;
+          &lt;/el-form-item&gt;
+        &lt;/el-col&gt;
+      &lt;/template&gt;
+    &lt;/el-row&gt;
+  &lt;/el-form&gt;
+  &lt;div class=&quot;footer&quot;&gt;
+    &lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+import &#123; defineProps, withDefaults &#125; from 'vue'
+import &#123; IFormItem &#125; from './type'
+interface Prop &#123;
+  formItems: IFormItem[] // 表单配置项
+  labelWidth?: string // 每个表单标题宽度
+  itemStyle?: object // 每个表单样式
+  itemColLayout?: object // 表单布局
+  isHidden?: boolean // 该输入框是否隐藏
+&#125;
+const props = withDefaults(defineProps&lt;Prop&gt;(), &#123;
+  labelWidth: '120px',
+  itemColLayout: () =&gt; (&#123;
+    xl: 6, // &gt;=1920px
+    lg: 8, // &gt;=1200px
+    md: 12, // &gt;=992px
+    sm: 24, // &gt;=768px
+    xs: 24 // &lt;768px
+  &#125;),
+  itemStyle: () =&gt; (&#123;
+    padding: '10px 20px'
+  &#125;)
+&#125;)
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+.el-form-item &#123;
+  margin-top: 18px;
+&#125;
+.el-select &#123;
+  width: 100%;
+&#125;
+&lt;/style&gt;
+
+</code></pre><p>4.role.vue 页面组件</p><pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;role&quot;&gt;
+    &lt;form-test v-bind=&quot;searchFormConfig&quot;&gt;&lt;/form-test&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+import formTest from '@/base-ui/form/form-test.vue'
+import &#123; searchFormConfig &#125; from './config/search-config-test'
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;less&quot;&gt;&lt;/style&gt;
+
+</code></pre><p>这时已经初步封装好了，我们可以使用一下看效果，我们可以看到样式跟之前完全一样，但是页面的代码量就那么点，要用的话直接用我们封装好的 form 组件然后传入配置项就出来了</p><p><img data-src="https://fastly.jsdelivr.net/gh/aaaa8880788/duck-img//blog/Vue/Element%20Plus%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/image-20220506153130565.png" alt="image-20220506153130565"></p><p>它的可扩展性也是很强的，比如：</p><p>这里我们把样式配置项全部传空值，然后配置项也传一个，它又变成原来最丑的样子了，证明我们是可以随意更改它的样式和布局，只需要通过传入配置项更改就可以了，方便</p><p>配置项文件</p><pre><code>import &#123; IForm &#125; from '@/base-ui/form/type'
+export const searchFormConfig: IForm = &#123;
+  formItems: [
+    &#123;
+      field: 'id',
+      type: 'input',
+      label: '用户id',
+      placeholder: '请输入用户id'
+    &#125;
+  ],
+  labelWidth: '',
+  itemColLayout: &#123;&#125;,
+  itemStyle: &#123;&#125;
+&#125;
+
+</code></pre><p><img data-src="https://fastly.jsdelivr.net/gh/aaaa8880788/duck-img//blog/Vue/Element%20Plus%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/image-20220506153141995.png" alt="image-20220506153141995"></p><p>其实到这里还没结束，因为这时的表单还输入不了东西，因为我们根本就没给它的输入框绑定值，所以我们要在配置项传入多一个 field 字段，它可以作为输入框绑定的值</p><h2 id="开始封装3"><a class="anchor" href="#开始封装3">#</a> 开始封装③</h2><p>这里仅仅是给配置项中增加 field 字段（注意如果用了 ts 的还要去 type 文件里面给我们定义的 IFormItem 接口添加一个 field 字段）</p><p>配置项文件</p><figure class="highlight typescript"><figcaption data-lang="typescript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> IForm <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'@/base-ui/form/type'</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">const</span> searchFormConfig<span class="token operator">:</span> IForm <span class="token operator">=</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  formItems<span class="token operator">:</span> <span class="token punctuation">[</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>      field<span class="token operator">:</span> <span class="token string">'id'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="6"></td><td><pre>      type<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="7"></td><td><pre>      label<span class="token operator">:</span> <span class="token string">'用户id'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="8"></td><td><pre>      placeholder<span class="token operator">:</span> <span class="token string">'请输入用户id'</span></pre></td></tr><tr><td data-num="9"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="10"></td><td><pre>    <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>      field<span class="token operator">:</span> <span class="token string">'name'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="12"></td><td><pre>      type<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="13"></td><td><pre>      label<span class="token operator">:</span> <span class="token string">'用户名'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="14"></td><td><pre>      placeholder<span class="token operator">:</span> <span class="token string">'请输入用户名'</span></pre></td></tr><tr><td data-num="15"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="16"></td><td><pre>    <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>      field<span class="token operator">:</span> <span class="token string">'realname'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="18"></td><td><pre>      type<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="19"></td><td><pre>      label<span class="token operator">:</span> <span class="token string">'真实姓名'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="20"></td><td><pre>      placeholder<span class="token operator">:</span> <span class="token string">'请输入真实姓名'</span></pre></td></tr><tr><td data-num="21"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="22"></td><td><pre>    <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="23"></td><td><pre>      field<span class="token operator">:</span> <span class="token string">'cellphone'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="24"></td><td><pre>      type<span class="token operator">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="25"></td><td><pre>      label<span class="token operator">:</span> <span class="token string">'电话号码'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="26"></td><td><pre>      placeholder<span class="token operator">:</span> <span class="token string">'请输入电话号码'</span></pre></td></tr><tr><td data-num="27"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="28"></td><td><pre>    <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="29"></td><td><pre>      field<span class="token operator">:</span> <span class="token string">'enable'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="30"></td><td><pre>      type<span class="token operator">:</span> <span class="token string">'select'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="31"></td><td><pre>      label<span class="token operator">:</span> <span class="token string">'用户状态'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="32"></td><td><pre>      placeholder<span class="token operator">:</span> <span class="token string">'请选择用户状态'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="33"></td><td><pre>      options<span class="token operator">:</span> <span class="token punctuation">[</span></pre></td></tr><tr><td data-num="34"></td><td><pre>        <span class="token punctuation">&#123;</span> label<span class="token operator">:</span> <span class="token string">'启用'</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="35"></td><td><pre>        <span class="token punctuation">&#123;</span> label<span class="token operator">:</span> <span class="token string">'禁用'</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="36"></td><td><pre>      <span class="token punctuation">]</span></pre></td></tr><tr><td data-num="37"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="38"></td><td><pre>    <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="39"></td><td><pre>      field<span class="token operator">:</span> <span class="token string">'createAt'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="40"></td><td><pre>      type<span class="token operator">:</span> <span class="token string">'datepicker'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="41"></td><td><pre>      label<span class="token operator">:</span> <span class="token string">'创建时间'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="42"></td><td><pre>      otherOptions<span class="token operator">:</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="43"></td><td><pre>        startPlaceholder<span class="token operator">:</span> <span class="token string">'开始时间'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="44"></td><td><pre>        endPlaceholder<span class="token operator">:</span> <span class="token string">'结束时间'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="45"></td><td><pre>        type<span class="token operator">:</span> <span class="token string">'daterange'</span></pre></td></tr><tr><td data-num="46"></td><td><pre>      <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="47"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="48"></td><td><pre>  <span class="token punctuation">]</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="49"></td><td><pre>  labelWidth<span class="token operator">:</span> <span class="token string">'120px'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="50"></td><td><pre>  itemColLayout<span class="token operator">:</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="51"></td><td><pre>    span<span class="token operator">:</span> <span class="token number">8</span></pre></td></tr><tr><td data-num="52"></td><td><pre>  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="53"></td><td><pre>  itemStyle<span class="token operator">:</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="54"></td><td><pre>    padding<span class="token operator">:</span> <span class="token string">'10px 20px'</span></pre></td></tr><tr><td data-num="55"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="56"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>因为传入了 fied 字段，所以我们要收集所有的 field 字段，组成 formData 数据，传入表单组件，formData 里面的每个子项分别作为每个输入框绑定的值</p><p>注意：这里有两个难点</p><p>难点一：</p><p>我们传进去的数据在里面是要做修改传出来的，而 vue 的原则是单项数据流传输，我们不能直接将数据传进去（其实事实可以这样做，但是违背了单向数据流传输原则，我们尽量不违背哈），所以我们采用 v-model 的方式将 formData 传入 form 组件，这样做的话就是双向判定了，不算违背嘿嘿</p><p>难点二：因为我们传进去的 formData 的数据，并不是在 form 组件里面用的，而是要绑定到 form 组件里面的 element puls 的输入框里面的，所以我们在 form 组件里面接收到 formData 数据，然后在把 formData 它的各个子项 v-model 绑定到输入框里面，但是这样会报错，不能直接用 v-model, 这里就需要知道 v-model 是怎么实现的了，我们在这里是直接把接收到的 formData 数据绑定到输入框里面的，在 form 组件并没有定义 formData 这个变量，所以不能直接用 v-model 的方法，这了可能有点懵，举个例子</p><p>（比如你将一个值 test 用 v-model 传入一个 input 的框，你输入框输入数据，你的 test 是会同步改变，也就是说，v-model 会把你修改后的值传出来赋值给你的 test，而在这里，我们将 formData 用 v-model 绑定到输入框，输入框值改变，正常来说它会将修改后的值赋值给我们传进去的 formData，但是我们不能让它直接赋值给我们的 formData，因为我们的 formData 也是从别的组件传进来的，所以我们要把修改后的值再次传出去到传进来 formData 数据的那个组件中，而不是直接就赋值，这时我们就要用到 v-model 的原始写法了，其实 v-model 是个语法糖来的）</p><p>form.vue 组件</p><pre><code>&lt;template&gt;
+  &lt;div class=&quot;header&quot;&gt;
+    &lt;slot name=&quot;header&quot;&gt; &lt;/slot&gt;
+  &lt;/div&gt;
+  &lt;el-form ref=&quot;ruleFormRef&quot; :labelWidth=&quot;labelWidth&quot;&gt;
+    &lt;el-row&gt;
+      &lt;template v-for=&quot;item in formItems&quot; :key=&quot;item.label&quot;&gt;
+        &lt;el-col v-bind=&quot;itemColLayout&quot;&gt;
+          &lt;el-form-item
+            v-if=&quot;!item.isHidden&quot;
+            :label=&quot;item.label&quot;
+            :style=&quot;itemStyle&quot;
+          &gt;
+            &lt;template v-if=&quot;item.type === 'input' || item.type === 'password'&quot;&gt;
+              &lt;el-input
+                :placeholder=&quot;item.placeholder&quot;
+                :show-password=&quot;item.type === 'password'&quot;
+                :model-value=&quot;modelValue[`$&#123;item.field&#125;`]&quot;
+                @update:modelValue=&quot;valueChange($event, item.field)&quot;
+              &gt;&lt;/el-input&gt;
+            &lt;/template&gt;
+            &lt;template v-else-if=&quot;item.type === 'select'&quot;&gt;
+              &lt;el-select
+                :placeholder=&quot;item.placeholder&quot;
+                :model-value=&quot;modelValue[`$&#123;item.field&#125;`]&quot;
+                @update:modelValue=&quot;valueChange($event, item.field)&quot;
+              &gt;
+                &lt;el-option
+                  v-for=&quot;option in item.options&quot;
+                  :key=&quot;option.label&quot;
+                  :label=&quot;option.label&quot;
+                  :value=&quot;option.value&quot;
+                &gt;&lt;/el-option&gt;
+              &lt;/el-select&gt;
+            &lt;/template&gt;
+            &lt;template v-if=&quot;item.type === 'datepicker'&quot;&gt;
+              &lt;el-date-picker
+                v-bind=&quot;item.otherOptions&quot;
+                :model-value=&quot;modelValue[`$&#123;item.field&#125;`]&quot;
+                @update:modelValue=&quot;valueChange($event, item.field)&quot;
+              &gt;&lt;/el-date-picker&gt;
+            &lt;/template&gt;
+          &lt;/el-form-item&gt;
+        &lt;/el-col&gt;
+      &lt;/template&gt;
+    &lt;/el-row&gt;
+  &lt;/el-form&gt;
+  &lt;div class=&quot;footer&quot;&gt;
+    &lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+import &#123; defineProps, withDefaults, defineEmits &#125; from 'vue'
+import &#123; IFormItem &#125; from './type'
+interface Prop &#123;
+  formItems: IFormItem[] // 表单配置项
+  labelWidth?: string // 每个表单标题宽度
+  itemStyle?: object // 每个表单样式
+  itemColLayout?: object // 表单布局
+  isHidden?: boolean // 该输入框是否隐藏
+  modelValue: object //绑定表单的每个数据
+&#125;
+const props = withDefaults(defineProps&lt;Prop&gt;(), &#123;
+  labelWidth: '120px',
+  itemColLayout: () =&gt; (&#123;
+    xl: 6, // &gt;=1920px
+    lg: 8, // &gt;=1200px
+    md: 12, // &gt;=992px
+    sm: 24, // &gt;=768px
+    xs: 24 // &lt;768px
+  &#125;),
+  itemStyle: () =&gt; (&#123;
+    padding: '10px 20px'
+  &#125;)
+&#125;)
+const emit = defineEmits&lt;&#123;
+  (e: 'update:modelValue', value: any): void
+&#125;&gt;()
+
+// 输入框值改变该函数都会触发，将改变后的值传出去
+const valueChange = (value: any, field: string) =&gt; &#123;
+  emit('update:modelValue', &#123; ...props.modelValue, [field]: value &#125;)
+&#125;
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+.el-form-item &#123;
+  margin-top: 18px;
+&#125;
+.el-select &#123;
+  width: 100%;
+&#125;
+&lt;/style&gt;
+
+</code></pre><p>role.vue 页面组件</p><pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;role&quot;&gt;
+    &lt;form-test v-bind=&quot;searchFormConfig&quot; v-model=&quot;formData&quot;&gt;&lt;/form-test&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+import formTest from '@/base-ui/form/form-test.vue'
+import &#123; searchFormConfig &#125; from './config/search-config-test'
+import &#123; ref &#125; from 'vue'
+// 在这里取出所有的field字段组成formData数据
+const formItems = searchFormConfig.formItems ?? []
+
+let formDataInit = &#123;&#125;
+formItems.map((item) =&gt; &#123;
+  formDataInit[item.field] = ''
+&#125;)
+let formData = ref(formDataInit)
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;less&quot;&gt;&lt;/style&gt;
+
+</code></pre><p><img data-src="https://fastly.jsdelivr.net/gh/aaaa8880788/duck-img//blog/Vue/Element%20Plus%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/image-20220506153156166.png" alt="image-20220506153156166"></p><p>这时我们发现它可以拿到数据了，很 nice，其实这差不多已经算封装好了，可以通过配置项修改里面的东西了，同时也可以拿到数据，但是我这个项目不止于此，我这其实要做表单的查询的，所以我要改装一下变成这样</p><p><img data-src="https://fastly.jsdelivr.net/gh/aaaa8880788/duck-img//blog/Vue/Element%20Plus%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/image-20220506153210281.png" alt="image-20220506153210281"></p><p>其实就是加了两个插槽和两个方法，我这里要实现功能就是点击重置按钮，它会重置表单数据，点击搜索按钮就可以拿到表单数据，这样我们就可以用我们拿到的表单数据去进行我们的操作拉，所以上代码</p><p>role.vue 组件</p><p>该部分我们传入了两个 template，一个是标题：高级检索，一个是两个按钮</p><p>这里要重置按钮重置表单数据，取到表单的 ref 调用 resetFields 方法就好了，然后点击搜索按钮可以打印出 formData 数据，然后我们就可以利用该数据去做我们想要做的操作了，例如查询列表数据等</p><pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;role&quot;&gt;
+    &lt;form-test v-bind=&quot;searchFormConfig&quot; v-model=&quot;formData&quot; ref=&quot;formTestRef&quot;&gt;
+      &lt;template #header&gt;
+        &lt;div class=&quot;header&quot;&gt;
+          &lt;h1&gt;高级检索&lt;/h1&gt;
+        &lt;/div&gt;
+      &lt;/template&gt;
+      &lt;template #footer&gt;
+        &lt;div class=&quot;footer&quot;&gt;
+          &lt;el-button type=&quot;primary&quot; :icon=&quot;Refresh&quot; @click=&quot;resetBtnClick&quot;
+            &gt;重置&lt;/el-button
+          &gt;
+          &lt;el-button type=&quot;primary&quot; :icon=&quot;Search&quot; @click=&quot;searchBtnClick&quot;
+            &gt;搜索&lt;/el-button
+          &gt;
+        &lt;/div&gt;
+      &lt;/template&gt;
+    &lt;/form-test&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+import formTest from '@/base-ui/form/form-test.vue'
+import &#123; searchFormConfig &#125; from './config/search-config-test'
+import &#123; ref &#125; from 'vue'
+import &#123; Search, Refresh &#125; from '@element-plus/icons-vue'
+// 在这里取出所有的field字段组成formData数据
+const formItems = searchFormConfig.formItems ?? []
+
+let formDataInit = &#123;&#125;
+formItems.map((item) =&gt; &#123;
+  formDataInit[item.field] = ''
+&#125;)
+let formData = ref(formDataInit)
+
+const formTestRef = ref&lt;InstanceType&lt;typeof formTest&gt;&gt;()
+
+// 重置点击
+const resetBtnClick = () =&gt; &#123;
+  formTestRef.value?.resetForm()
+&#125;
+// 搜索点击
+const searchBtnClick = () =&gt; &#123;
+  // 这里需要遍历搜索配置项，配置项里可以传dataType，要求数据返回什么类型的数据
+  let queryInfo = &#123; ...formData.value &#125;
+  searchFormConfig.formItems.map((item: any) =&gt; &#123;
+    if (item.dataType === 'number' &amp;&amp; queryInfo[item.field] !== '') &#123;
+      queryInfo[item.field] = Number(queryInfo[item.field])
+    &#125;
+  &#125;)
+  // 清空queryInfo中没有值的属性
+  for (const i in queryInfo) &#123;
+    if (queryInfo[i] === '') &#123;
+      delete queryInfo[i]
+    &#125;
+  &#125;
+  console.log(queryInfo)
+&#125;
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;less&quot;&gt;
+.header &#123;
+  padding-top: 20px;
+&#125;
+.footer &#123;
+  text-align: right;
+  padding: 0 50px 20px 0;
+&#125;
+&lt;/style&gt;
+
+</code></pre><p>form.vue</p><pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;header&quot;&gt;
+    &lt;slot name=&quot;header&quot;&gt; &lt;/slot&gt;
+  &lt;/div&gt;
+  &lt;el-form ref=&quot;ruleFormRef&quot; :labelWidth=&quot;labelWidth&quot; :model=&quot;modelValue&quot;&gt;
+    &lt;el-row&gt;
+      &lt;template v-for=&quot;item in formItems&quot; :key=&quot;item.label&quot;&gt;
+        &lt;el-col v-bind=&quot;itemColLayout&quot;&gt;
+          &lt;el-form-item
+            v-if=&quot;!item.isHidden&quot;
+            :label=&quot;item.label&quot;
+            :style=&quot;itemStyle&quot;
+            :prop=&quot;item.field&quot;
+          &gt;
+            &lt;template v-if=&quot;item.type === 'input' || item.type === 'password'&quot;&gt;
+              &lt;el-input
+                :placeholder=&quot;item.placeholder&quot;
+                :show-password=&quot;item.type === 'password'&quot;
+                :model-value=&quot;modelValue[`$&#123;item.field&#125;`]&quot;
+                @update:modelValue=&quot;valueChange($event, item.field)&quot;
+              &gt;&lt;/el-input&gt;
+            &lt;/template&gt;
+            &lt;template v-else-if=&quot;item.type === 'select'&quot;&gt;
+              &lt;el-select
+                :placeholder=&quot;item.placeholder&quot;
+                :model-value=&quot;modelValue[`$&#123;item.field&#125;`]&quot;
+                @update:modelValue=&quot;valueChange($event, item.field)&quot;
+              &gt;
+                &lt;el-option
+                  v-for=&quot;option in item.options&quot;
+                  :key=&quot;option.label&quot;
+                  :label=&quot;option.label&quot;
+                  :value=&quot;option.value&quot;
+                &gt;&lt;/el-option&gt;
+              &lt;/el-select&gt;
+            &lt;/template&gt;
+            &lt;template v-if=&quot;item.type === 'datepicker'&quot;&gt;
+              &lt;el-date-picker
+                v-bind=&quot;item.otherOptions&quot;
+                :model-value=&quot;modelValue[`$&#123;item.field&#125;`]&quot;
+                @update:modelValue=&quot;valueChange($event, item.field)&quot;
+              &gt;&lt;/el-date-picker&gt;
+            &lt;/template&gt;
+          &lt;/el-form-item&gt;
+        &lt;/el-col&gt;
+      &lt;/template&gt;
+    &lt;/el-row&gt;
+  &lt;/el-form&gt;
+  &lt;div class=&quot;footer&quot;&gt;
+    &lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+import &#123; defineProps, withDefaults, defineEmits, ref, defineExpose &#125; from 'vue'
+import &#123; IFormItem &#125; from './type'
+import type &#123; FormInstance &#125; from 'element-plus'
+
+interface Prop &#123;
+  formItems: IFormItem[] // 表单配置项
+  labelWidth?: string // 每个表单标题宽度
+  itemStyle?: object // 每个表单样式
+  itemColLayout?: object // 表单布局
+  isHidden?: boolean // 该输入框是否隐藏
+  modelValue: object //绑定表单的每个数据
+&#125;
+const props = withDefaults(defineProps&lt;Prop&gt;(), &#123;
+  labelWidth: '120px',
+  itemColLayout: () =&gt; (&#123;
+    xl: 6, // &gt;=1920px
+    lg: 8, // &gt;=1200px
+    md: 12, // &gt;=992px
+    sm: 24, // &gt;=768px
+    xs: 24 // &lt;768px
+  &#125;),
+  itemStyle: () =&gt; (&#123;
+    padding: '10px 20px'
+  &#125;)
+&#125;)
+const emit = defineEmits&lt;&#123;
+  (e: 'update:modelValue', value: any): void
+&#125;&gt;()
+const ruleFormRef = ref&lt;FormInstance&gt;()
+
+// 输入框值改变该函数都会触发，将改变后的值传出去
+const valueChange = (value: any, field: string) =&gt; &#123;
+  emit('update:modelValue', &#123; ...props.modelValue, [field]: value &#125;)
+&#125;
+
+// 表单重置方法
+const resetForm = () =&gt; &#123;
+  ruleFormRef.value?.resetFields()
+&#125;
+defineExpose(&#123;
+  resetForm
+&#125;)
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+.el-form-item &#123;
+  margin-top: 18px;
+&#125;
+.el-select &#123;
+  width: 100%;
+&#125;
+&lt;/style&gt;
+</code></pre><p>1. 该组件要添加表单重置的方法</p><p>2. 把 formData 的值绑定到 form 表单上：model=‘formData’</p><p>3. 给 el-form-item 加上 prop 属性</p><p>2，3 如果不加上的话，表单内置的重置表单方法会失效</p><pre><code>
+</code></pre><p><img data-src="https://fastly.jsdelivr.net/gh/aaaa8880788/duck-img//blog/Vue/Element%20Plus%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/image-20220506153221867.png" alt="image-20220506153221867"></p><p><img data-src="https://fastly.jsdelivr.net/gh/aaaa8880788/duck-img//blog/Vue/Element%20Plus%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/image-20220506153231986.png" alt="image-20220506153231986"></p><p>这时我们已经封装完成了，但是我们可以发现，我们的 role 组件东西有点多了，如果我们其他组件比如，user 组件等，都要用这样类似的布局，我们这时就又要把这一堆代码给 cv 一遍，所以我们有可以把 role 里面这堆东西再封装一次</p><h2 id="开始封装4"><a class="anchor" href="#开始封装4">#</a> 开始封装④</h2><p>page-search.vue 组件</p><pre><code class="language-vue">&lt;template&gt;
+  &lt;Bu-form v-bind=&quot;searchFormConfig&quot; v-model=&quot;formData&quot; ref=&quot;BuFormRef&quot;&gt;
+    &lt;template #header&gt;
+      &lt;div class=&quot;header&quot;&gt;
+        &lt;h1&gt;高级检索&lt;/h1&gt;
+      &lt;/div&gt;
+    &lt;/template&gt;
+    &lt;template #footer&gt;
+      &lt;div class=&quot;footer&quot;&gt;
+        &lt;el-button type=&quot;primary&quot; :icon=&quot;Refresh&quot; @click=&quot;resetBtnClick&quot;
+          &gt;重置&lt;/el-button
+        &gt;
+        &lt;el-button type=&quot;primary&quot; :icon=&quot;Search&quot; @click=&quot;searchBtnClick&quot;
+          &gt;搜索&lt;/el-button
+        &gt;
+      &lt;/div&gt;
+    &lt;/template&gt;
+  &lt;/Bu-form&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+import &#123; Search, Refresh &#125; from '@element-plus/icons-vue'
+import BuForm from '@/base-ui/form/form-test.vue'
+import &#123; defineProps, ref, defineEmits &#125; from 'vue'
+import &#123; useStore &#125; from '@/store'
+interface Prop &#123;
+  searchFormConfig: any
+&#125;
+const props = defineProps&lt;Prop&gt;()
+const emit = defineEmits&lt;&#123;
+  (e: 'resetBtnClick'): void
+  (e: 'searchBtnClick', formData: object): void
+&#125;&gt;()
+const store = useStore()
+const BuFormRef = ref&lt;InstanceType&lt;typeof BuForm&gt;&gt;()
+
+const formItems = props.searchFormConfig?.formItems ?? []
+
+let formDataInit = &#123;&#125;
+formItems.map((item: any) =&gt; &#123;
+  formDataInit[item.field] = ''
+&#125;)
+let formData = ref(formDataInit)
+
+// 重置点击
+const resetBtnClick = () =&gt; &#123;
+  BuFormRef.value?.resetForm()
+  emit('resetBtnClick')
+&#125;
+// 搜索点击
+const searchBtnClick = () =&gt; &#123;
+  // 这里需要遍历搜索配置项，配置项里可以传dataType，要求数据返回什么类型的数据
+  let queryInfo = &#123; ...formData.value &#125;
+  props.searchFormConfig.formItems.map((item: any) =&gt; &#123;
+    if (item.dataType === 'number' &amp;&amp; queryInfo[item.field] !== '') &#123;
+      queryInfo[item.field] = Number(queryInfo[item.field])
+    &#125;
+  &#125;)
+  // 清空queryInfo中没有值的属性
+  for (const i in queryInfo) &#123;
+    if (queryInfo[i] === '') &#123;
+      delete queryInfo[i]
+    &#125;
+  &#125;
+  emit('searchBtnClick', queryInfo)
+&#125;
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+.header &#123;
+  padding-top: 20px;
+&#125;
+.footer &#123;
+  text-align: right;
+  padding: 0 50px 20px 0;
+&#125;
+&lt;/style&gt;
+
+</code></pre><p>role.vue 组件</p><pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;role&quot;&gt;
+    &lt;page-search-test
+      :searchFormConfig=&quot;searchFormConfig&quot;
+      @resetBtnClick=&quot;handlerReset&quot;
+      @searchBtnClick=&quot;handlerSearch&quot;
+    &gt;&lt;/page-search-test&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+import &#123; searchFormConfig &#125; from './config/search-config-test'
+import pageSearchTest from '@/components/page-search/page-search-test.vue'
+const handlerReset = () =&gt; &#123;
+  console.log('点击了重置按钮')
+&#125;
+const handlerSearch = (queryInfo: any) =&gt; &#123;
+  console.log('点击了搜索按钮，值为:', queryInfo)
+&#125;
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;less&quot;&gt;&lt;/style&gt;
+
+</code></pre><p>效果图</p><p><img data-src="https://fastly.jsdelivr.net/gh/aaaa8880788/duck-img//blog/Vue/Element%20Plus%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/image-20220506153242943.png" alt="image-20220506153242943"></p><p>这里我们就可以体会到了，一样的效果，role 里面的代码是这么的少，只需要传入配置项就可以搞出这个表单，而且还能拿到表单数据，而且重点是，下个页面再用这个布局，直接用 page-search 组件就可以了，只需要传入不同的配置项，如果不同布局，再封装另一个 page-search 就是了，但是这是后台耶？搞那么华丽呼哨？不就是搜索表单，展示表单么</p><p>下面附上完整全部封装代码</p><h2 id="完整封装代码5"><a class="anchor" href="#完整封装代码5">#</a> 完整封装代码⑤</h2><h3 id="配置项类型文件"><a class="anchor" href="#配置项类型文件">#</a> 配置项类型文件</h3><figure class="highlight typescript"><figcaption data-lang="typescript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// type.ts</span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">type</span> <span class="token class-name">IFormType</span> <span class="token operator">=</span> <span class="token string">'input'</span> <span class="token operator">|</span> <span class="token string">'password'</span> <span class="token operator">|</span> <span class="token string">'select'</span> <span class="token operator">|</span> <span class="token string">'datepicker'</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">interface</span> <span class="token class-name">IFormOption</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>  label<span class="token operator">:</span> <span class="token builtin">string</span></pre></td></tr><tr><td data-num="7"></td><td><pre>  value<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token builtin">number</span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="9"></td><td><pre></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">IFormItem</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>  field<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// 字段名</span></pre></td></tr><tr><td data-num="12"></td><td><pre>  type<span class="token operator">:</span> IFormType <span class="token comment">// 输入框类型</span></pre></td></tr><tr><td data-num="13"></td><td><pre>  dataType<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// 输入框返回数据类型</span></pre></td></tr><tr><td data-num="14"></td><td><pre>  label<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// 输入框标题</span></pre></td></tr><tr><td data-num="15"></td><td><pre>  rules<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token comment">// 输入框验证规则</span></pre></td></tr><tr><td data-num="16"></td><td><pre>  placeholder<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">any</span> <span class="token comment">// 输入框默认显示内容</span></pre></td></tr><tr><td data-num="17"></td><td><pre>  <span class="token comment">// 针对 select</span></pre></td></tr><tr><td data-num="18"></td><td><pre>  options<span class="token operator">?</span><span class="token operator">:</span> IFormOption<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token comment">// 选择器的可选子选项</span></pre></td></tr><tr><td data-num="19"></td><td><pre>  <span class="token comment">// 针对特殊属性</span></pre></td></tr><tr><td data-num="20"></td><td><pre>  otherOptions<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">any</span></pre></td></tr><tr><td data-num="21"></td><td><pre>  <span class="token comment">// 该行是否隐藏</span></pre></td></tr><tr><td data-num="22"></td><td><pre>  isHidden<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">boolean</span></pre></td></tr><tr><td data-num="23"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="24"></td><td><pre></pre></td></tr><tr><td data-num="25"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">IForm</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="26"></td><td><pre>  formItems<span class="token operator">:</span> IFormItem<span class="token punctuation">[</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="27"></td><td><pre>  labelWidth<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span></pre></td></tr><tr><td data-num="28"></td><td><pre>  itemStyle<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">any</span></pre></td></tr><tr><td data-num="29"></td><td><pre>  itemColLayout<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">any</span></pre></td></tr><tr><td data-num="30"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><h3 id="配置项文件"><a class="anchor" href="#配置项文件">#</a> 配置项文件</h3><pre><code>import &#123; IForm &#125; from '@/base-ui/form/type'
+export const searchFormConfig: IForm = &#123;
+  formItems: [
+    &#123;
+      field: 'id',
+      type: 'input',
+      label: '用户id',
+      placeholder: '请输入用户id'
+    &#125;,
+    &#123;
+      field: 'name',
+      type: 'input',
+      label: '用户名',
+      placeholder: '请输入用户名'
+    &#125;,
+    &#123;
+      field: 'realname',
+      type: 'input',
+      label: '真实姓名',
+      placeholder: '请输入真实姓名'
+    &#125;,
+    &#123;
+      field: 'cellphone',
+      type: 'input',
+      label: '电话号码',
+      placeholder: '请输入电话号码'
+    &#125;,
+    &#123;
+      field: 'enable',
+      type: 'select',
+      label: '用户状态',
+      placeholder: '请选择用户状态',
+      options: [
+        &#123; label: '启用', value: 1 &#125;,
+        &#123; label: '禁用', value: 0 &#125;
+      ]
+    &#125;,
+    &#123;
+      field: 'createAt',
+      type: 'datepicker',
+      label: '创建时间',
+      otherOptions: &#123;
+        startPlaceholder: '开始时间',
+        endPlaceholder: '结束时间',
+        type: 'daterange'
+      &#125;
+    &#125;
+  ]
+&#125;
+
+</code></pre><h3 id="form表单组件文件"><a class="anchor" href="#form表单组件文件">#</a> form 表单组件文件</h3><pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;header&quot;&gt;
+    &lt;slot name=&quot;header&quot;&gt; &lt;/slot&gt;
+  &lt;/div&gt;
+  &lt;el-form
+    :label-width=&quot;labelWidth&quot;
+    ref=&quot;ruleFormRef&quot;
+    status-icon
+    :model=&quot;modelValue&quot;
+  &gt;
+    &lt;el-row&gt;
+      &lt;template v-for=&quot;item in formItems&quot; :key=&quot;item.label&quot;&gt;
+        &lt;el-col v-bind=&quot;itemColLayout&quot;&gt;
+          &lt;el-form-item
+            v-if=&quot;!item.isHidden&quot;
+            :label=&quot;item.label&quot;
+            :rules=&quot;item.rules&quot;
+            :style=&quot;itemStyle&quot;
+            :prop=&quot;item.field&quot;
+          &gt;
+            &lt;template v-if=&quot;item.type === 'input' || item.type === 'password'&quot;&gt;
+              &lt;el-input
+                :placeholder=&quot;item.placeholder&quot;
+                :show-password=&quot;item.type === 'password'&quot;
+                :model-value=&quot;modelValue[`$&#123;item.field&#125;`]&quot;
+                @update:modelValue=&quot;valueChange($event, item.field)&quot;
+                clearable
+              /&gt;
+            &lt;/template&gt;
+            &lt;template v-else-if=&quot;item.type === 'select'&quot;&gt;
+              &lt;el-select
+                :placeholder=&quot;item.placeholder&quot;
+                :model-value=&quot;modelValue[`$&#123;item.field&#125;`]&quot;
+                @update:modelValue=&quot;valueChange($event, item.field)&quot;
+                style=&quot;width: 100%&quot;
+                clearable
+              &gt;
+                &lt;el-option
+                  v-for=&quot;option in item.options&quot;
+                  :key=&quot;option.value&quot;
+                  :value=&quot;option.value&quot;
+                  :label=&quot;option.label&quot;
+                &gt;
+                &lt;/el-option&gt;
+              &lt;/el-select&gt;
+            &lt;/template&gt;
+            &lt;template v-else-if=&quot;item.type === 'datepicker'&quot;&gt;
+              &lt;el-date-picker
+                unlink-panels
+                v-bind=&quot;item.otherOptions&quot;
+                :model-value=&quot;modelValue[`$&#123;item.field&#125;`]&quot;
+                @update:modelValue=&quot;valueChange($event, item.field)&quot;
+              &gt;&lt;/el-date-picker&gt;
+            &lt;/template&gt;
+          &lt;/el-form-item&gt;
+        &lt;/el-col&gt;
+      &lt;/template&gt;
+    &lt;/el-row&gt;
+  &lt;/el-form&gt;
+  &lt;div class=&quot;footer&quot;&gt;
+    &lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+import &#123; IFormItem &#125; from './type'
+import &#123; defineProps, withDefaults, ref, defineEmits, defineExpose &#125; from 'vue'
+import type &#123; FormInstance &#125; from 'element-plus'
+
+// 定义属性
+interface Props &#123;
+  formItems: IFormItem[] // 表单配置项
+  labelWidth?: string // 每个表单标题宽度
+  itemStyle?: object // 每个表单样式
+  itemColLayout?: object // 表单布局
+  modelValue: object //绑定表单的每个数据
+  isHidden?: boolean
+&#125;
+const props = withDefaults(defineProps&lt;Props&gt;(), &#123;
+  formItems: () =&gt; [],
+  labelWidth: '120px',
+  itemStyle: () =&gt; (&#123; padding: '10px 20px' &#125;),
+  itemColLayout: () =&gt; (&#123;
+    xl: 6, // &gt;=1920px
+    lg: 8, // &gt;=1200px
+    md: 12, // &gt;=992px
+    sm: 24, // &gt;=768px
+    xs: 24 // &lt;768px
+  &#125;)
+&#125;)
+const emit = defineEmits&lt;&#123;
+  (e: 'update:modelValue', value: any): void
+&#125;&gt;()
+
+const ruleFormRef = ref&lt;FormInstance&gt;()
+
+// 定义方法
+const valueChange = (value: any, field: string) =&gt; &#123;
+  emit('update:modelValue', &#123; ...props.modelValue, [field]: value &#125;)
+&#125;
+
+// 表单重置方法
+const resetForm = () =&gt; &#123;
+  ruleFormRef.value?.resetFields()
+&#125;
+defineExpose(&#123;
+  resetForm
+&#125;)
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;less&quot;&gt;
+.el-form-item &#123;
+  margin-top: 18px;
+&#125;
+&lt;/style&gt;
+
+</code></pre><h3 id="page-search组件文件"><a class="anchor" href="#page-search组件文件">#</a> page-search 组件文件</h3><pre><code>&lt;template&gt;
+  &lt;div class=&quot;page-search&quot;&gt;
+    &lt;Bu-form v-bind=&quot;searchFormConfig&quot; v-model=&quot;formData&quot; ref=&quot;BuFormRef&quot;&gt;
+      &lt;template #header&gt;
+        &lt;div class=&quot;header&quot;&gt;
+          &lt;h1&gt;高级检索&lt;/h1&gt;
+        &lt;/div&gt;
+      &lt;/template&gt;
+      &lt;template #footer&gt;
+        &lt;div class=&quot;footer&quot;&gt;
+          &lt;el-button type=&quot;primary&quot; :icon=&quot;Refresh&quot; @click=&quot;resetClick&quot;
+            &gt;重置&lt;/el-button
+          &gt;
+          &lt;el-button type=&quot;primary&quot; :icon=&quot;Search&quot; @click=&quot;searchClick&quot;
+            &gt;搜索&lt;/el-button
+          &gt;
+        &lt;/div&gt;
+      &lt;/template&gt;
+    &lt;/Bu-form&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+import &#123; useStore &#125; from '@/store'
+import BuForm from '@/base-ui/form/form.vue'
+import &#123; Search, Refresh &#125; from '@element-plus/icons-vue'
+import &#123; ref, defineProps, defineEmits &#125; from 'vue'
+import &#123; IForm &#125; from '@/base-ui/form/type'
+
+// 定义属性
+interface Props &#123;
+  searchFormConfig: IForm
+&#125;
+const props = defineProps&lt;Props&gt;()
+const emit = defineEmits&lt;&#123;
+  (e: 'resetBtnClick'): void
+  (e: 'searchBtnClick', formData: object): void
+&#125;&gt;()
+const store = useStore()
+const BuFormRef = ref&lt;InstanceType&lt;typeof BuForm&gt;&gt;()
+
+// 1.从接收到的搜索配置中取出各个field,组成表单的数据formData
+const formItems = props.searchFormConfig?.formItems ?? []
+let formDataInit = &#123;&#125;
+formItems.map((item) =&gt; &#123;
+  formDataInit[item.field] = ''
+&#125;)
+let formData = ref(formDataInit)
+
+// 2.重置与搜索功能
+// 重置按钮触发
+const resetClick = () =&gt; &#123;
+  BuFormRef.value?.resetForm()
+  emit('resetBtnClick')
+&#125;
+// 搜索按钮触发
+const searchClick = () =&gt; &#123;
+  // 这里需要遍历搜索配置项，配置项里可以传dataType，要求数据返回什么类型的数据
+  let queryInfo = &#123; ...formData.value &#125;
+  props.searchFormConfig.formItems.map((item) =&gt; &#123;
+    if (item.dataType === 'number' &amp;&amp; queryInfo[item.field] !== '') &#123;
+      queryInfo[item.field] = Number(queryInfo[item.field])
+    &#125;
+  &#125;)
+  // 清空queryInfo中没有值的属性
+  for (const i in queryInfo) &#123;
+    if (queryInfo[i] === '') &#123;
+      delete queryInfo[i]
+    &#125;
+  &#125;
+  emit('searchBtnClick', queryInfo)
+&#125;
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+.header &#123;
+  padding-top: 20px;
+&#125;
+.footer &#123;
+  text-align: right;
+  padding: 0 50px 20px 0;
+&#125;
+&lt;/style&gt;
+
+</code></pre><h3 id="role页面组件文件"><a class="anchor" href="#role页面组件文件">#</a> role 页面组件文件</h3><pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;role&quot;&gt;
+    &lt;page-search
+      :searchFormConfig=&quot;searchFormConfig&quot;
+      @resetBtnClick=&quot;handlerReset&quot;
+      @searchBtnClick=&quot;handlerSearch&quot;
+    &gt;&lt;/page-search&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+import &#123; searchFormConfig &#125; from './config/search-config-test'
+import pageSearch from '@/components/page-search/page-search.vue'
+const handlerReset = () =&gt; &#123;
+  console.log('点击了重置按钮')
+&#125;
+const handlerSearch = (queryInfo: any) =&gt; &#123;
+  console.log('点击了搜索按钮，值为:', queryInfo)
+&#125;
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;less&quot;&gt;&lt;/style&gt;
+
+</code></pre><h2 id="结语"><a class="anchor" href="#结语">#</a> 结语</h2><p>写了这么多，终于写完了，这里是属于 Form 表单部分的封装全部过程，能写到这其实我挺有成就感的哈哈哈哈，因为我刚学会的时候思路有了，但是敲出来有点困难，不过这个过程是我又捋了一遍，然后自己敲出来的，感觉其实也不难，已经掌握了这种封装思路与方法了哈哈，其他组件其实也可以利用这种思路，封装出来，在页面上的使用直接传配置项调用就完事，开发每个相似的页面效率简直是牛逼</p><h1 id="table表格的封装"><a class="anchor" href="#table表格的封装">#</a> Table 表格的封装</h1><h2 id="简述-2"><a class="anchor" href="#简述-2">#</a> 简述</h2><p>再来折磨一遍，这里是 table 表单的封装，其实跟上面的差不多，有点小区别，会用到添加动态插槽，这里就不墨迹了，直接上用配置项封装前的正常使用</p><h2 id="正常使用"><a class="anchor" href="#正常使用">#</a> 正常使用</h2><p>user.vue</p><pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;user&quot;&gt;
+    &lt;el-table style=&quot;width: 100%&quot; :data=&quot;dataList&quot; border&gt;
+      &lt;!-- 1.传入showSelectColumn时展示的全选列 --&gt;
+      &lt;template v-if=&quot;contentTableConfig.showSelectColumn&quot;&gt;
+        &lt;el-table-column type=&quot;selection&quot; /&gt;
+      &lt;/template&gt;
+      &lt;!-- 2.传入showIndexColumn时展示的序号列 --&gt;
+      &lt;template v-if=&quot;contentTableConfig.showIndexColumn&quot;&gt;
+        &lt;el-table-column type=&quot;index&quot; label=&quot;序号&quot; /&gt;
+      &lt;/template&gt;
+      &lt;!-- 3.propList里面的所有列 --&gt;
+      &lt;template v-for=&quot;item in contentTableConfig.propList&quot; :key=&quot;item.prop&quot;&gt;
+        &lt;el-table-column v-bind=&quot;item&quot; show-overflow-tooltip&gt;
+          &lt;!-- 传有slotName时展示的插槽列 --&gt;
+          &lt;template #default=&quot;scope&quot; v-if=&quot;item.slotName&quot;&gt;
+            &lt;template v-if=&quot;item.slotName === 'handler'&quot;&gt;
+              &lt;el-button size=&quot;small&quot; :icon=&quot;Edit&quot; type=&quot;text&quot;&gt;编辑&lt;/el-button&gt;
+              &lt;el-button size=&quot;small&quot; :icon=&quot;Delete&quot; type=&quot;text&quot;
+                &gt;删除&lt;/el-button
+              &gt;
+            &lt;/template&gt;
+            &lt;template v-if=&quot;item.slotName === 'status'&quot;&gt;
+              &lt;el-button&gt;&#123;&#123;
+                scope.row.status === 0 ? '禁用' : '启用'
+              &#125;&#125;&lt;/el-button&gt;
+            &lt;/template&gt;
+          &lt;/template&gt;
+        &lt;/el-table-column&gt;
+      &lt;/template&gt;
+    &lt;/el-table&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+import &#123; Delete, Edit &#125; from '@element-plus/icons-vue'
+import &#123; useStore &#125; from '@/store'
+import &#123; computed &#125; from 'vue'
+const store = useStore()
+// 这里是网络请求数据
+const getPageData = () =&gt; &#123;
+  store.dispatch(`main/getPageListAction`, &#123;
+    queryInfo: &#123;
+      offset: 0,
+      size: 10
+    &#125;,
+    pageName: 'users'
+  &#125;)
+&#125;
+// 页面加载时第一次调用获取表单数据
+getPageData()
+const dataList = computed(() =&gt; store.getters[`main/pageListData`]('users'))
+
+// 表格配置项
+const contentTableConfig = &#123;
+  // 表格配置
+  propList: [
+    &#123; prop: 'id', label: '用户id', minWidth: '100', align: 'center' &#125;,
+    &#123; prop: 'name', label: '用户名', minWidth: '100', align: 'center' &#125;,
+    &#123; prop: 'realname', label: '真实姓名', minWidth: '100', align: 'center' &#125;,
+    &#123; prop: 'cellphone', label: '手机号码', minWidth: '100', align: 'center' &#125;,
+    &#123;
+      prop: 'enable',
+      label: '状态',
+      minWidth: '100',
+      slotName: 'status',
+      align: 'center'
+    &#125;,
+    &#123;
+      label: '操作',
+      minWidth: '120',
+      slotName: 'handler',
+      align: 'center'
+    &#125;
+  ],
+  // 表格具有序号列
+  showIndexColumn: true,
+  // 表格具有可选列
+  showSelectColumn: true
+&#125;
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;less&quot;&gt;&lt;/style&gt;
+</code></pre><p><img data-src="https://fastly.jsdelivr.net/gh/aaaa8880788/duck-img//blog/Vue/Element%20Plus%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/image-20220506153259867.png" alt="image-20220506153259867"></p><p>从上面可以看出，主页面的代码有多冗余，看到就头疼 + 裂开，所以开始一层封装</p><h2 id="开始封装1-2"><a class="anchor" href="#开始封装1-2">#</a> 开始封装①</h2><p>配置项类型文件</p><figure class="highlight typescript"><figcaption data-lang="typescript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">ITbaleOption</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>  prop<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  label<span class="token operator">:</span> <span class="token builtin">string</span></pre></td></tr><tr><td data-num="4"></td><td><pre>  minWidth<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span></pre></td></tr><tr><td data-num="5"></td><td><pre>  slotName<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">ITable</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>  propList<span class="token operator">:</span> ITbaleOption<span class="token punctuation">[</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="9"></td><td><pre>  showIndexColumn<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">boolean</span></pre></td></tr><tr><td data-num="10"></td><td><pre>  showSelectColumn<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">boolean</span></pre></td></tr><tr><td data-num="11"></td><td><pre>  childrenProps<span class="token operator">?</span><span class="token operator">:</span> object</pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>配置项文件</p><figure class="highlight typescript"><figcaption data-lang="typescript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> ITable <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'@/base-ui/table/type'</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">const</span> contentTableConfig<span class="token operator">:</span> ITable <span class="token operator">=</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  <span class="token comment">// 表格配置</span></pre></td></tr><tr><td data-num="4"></td><td><pre>  propList<span class="token operator">:</span> <span class="token punctuation">[</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    <span class="token punctuation">&#123;</span> prop<span class="token operator">:</span> <span class="token string">'id'</span><span class="token punctuation">,</span> label<span class="token operator">:</span> <span class="token string">'用户id'</span><span class="token punctuation">,</span> minWidth<span class="token operator">:</span> <span class="token string">'100'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token punctuation">&#123;</span> prop<span class="token operator">:</span> <span class="token string">'name'</span><span class="token punctuation">,</span> label<span class="token operator">:</span> <span class="token string">'用户名'</span><span class="token punctuation">,</span> minWidth<span class="token operator">:</span> <span class="token string">'100'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token punctuation">&#123;</span> prop<span class="token operator">:</span> <span class="token string">'realname'</span><span class="token punctuation">,</span> label<span class="token operator">:</span> <span class="token string">'真实姓名'</span><span class="token punctuation">,</span> minWidth<span class="token operator">:</span> <span class="token string">'100'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token punctuation">&#123;</span> prop<span class="token operator">:</span> <span class="token string">'cellphone'</span><span class="token punctuation">,</span> label<span class="token operator">:</span> <span class="token string">'手机号码'</span><span class="token punctuation">,</span> minWidth<span class="token operator">:</span> <span class="token string">'100'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="9"></td><td><pre>    <span class="token punctuation">&#123;</span> prop<span class="token operator">:</span> <span class="token string">'enable'</span><span class="token punctuation">,</span> label<span class="token operator">:</span> <span class="token string">'状态'</span><span class="token punctuation">,</span> minWidth<span class="token operator">:</span> <span class="token string">'100'</span><span class="token punctuation">,</span> slotName<span class="token operator">:</span> <span class="token string">'status'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="10"></td><td><pre>    <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>      label<span class="token operator">:</span> <span class="token string">'操作'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="12"></td><td><pre>      minWidth<span class="token operator">:</span> <span class="token string">'120'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="13"></td><td><pre>      slotName<span class="token operator">:</span> <span class="token string">'handler'</span></pre></td></tr><tr><td data-num="14"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>  <span class="token punctuation">]</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="16"></td><td><pre>  <span class="token comment">// 表格具有序号列</span></pre></td></tr><tr><td data-num="17"></td><td><pre>  showIndexColumn<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="18"></td><td><pre>  <span class="token comment">// 表格具有可选列</span></pre></td></tr><tr><td data-num="19"></td><td><pre>  showSelectColumn<span class="token operator">:</span> <span class="token boolean">true</span></pre></td></tr><tr><td data-num="20"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>table.vue 文件</p><pre><code class="language-vue">&lt;template&gt;
+  &lt;el-table style=&quot;width: 100%&quot; :data=&quot;listData&quot; border&gt;
+    &lt;!-- 1.传入showSelectColumn时展示的全选列 --&gt;
+    &lt;template v-if=&quot;showSelectColumn&quot;&gt;
+      &lt;el-table-column type=&quot;selection&quot; /&gt;
+    &lt;/template&gt;
+    &lt;!-- 2.传入showIndexColumn时展示的序号列 --&gt;
+    &lt;template v-if=&quot;showIndexColumn&quot;&gt;
+      &lt;el-table-column type=&quot;index&quot; label=&quot;序号&quot; /&gt;
+    &lt;/template&gt;
+    &lt;!-- 3.propList里面的所有列 --&gt;
+    &lt;template v-for=&quot;item in propList&quot; :key=&quot;item.prop&quot;&gt;
+      &lt;el-table-column v-bind=&quot;item&quot; show-overflow-tooltip&gt;
+        &lt;!-- 传有slotName时展示的插槽列 --&gt;
+        &lt;template #default=&quot;scope&quot; v-if=&quot;item.slotName&quot;&gt;
+          &lt;template v-if=&quot;item.slotName === 'handler'&quot;&gt;
+            &lt;el-button size=&quot;small&quot; :icon=&quot;Edit&quot; type=&quot;text&quot;&gt;编辑&lt;/el-button&gt;
+            &lt;el-button size=&quot;small&quot; :icon=&quot;Delete&quot; type=&quot;text&quot;&gt;删除&lt;/el-button&gt;
+          &lt;/template&gt;
+          &lt;template v-if=&quot;item.slotName === 'status'&quot;&gt;
+            &lt;el-button&gt;&#123;&#123;
+              scope.row.status === 0 ? '禁用' : '启用'
+            &#125;&#125;&lt;/el-button&gt;
+          &lt;/template&gt;
+        &lt;/template&gt;
+      &lt;/el-table-column&gt;
+    &lt;/template&gt;
+  &lt;/el-table&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+import &#123; Delete, Edit &#125; from '@element-plus/icons-vue'
+import &#123; defineProps, withDefaults, defineEmits &#125; from 'vue'
+import &#123; ITbaleOption &#125; from './type'
+interface Props &#123;
+  listData: any[] //表单数据
+  propList: ITbaleOption[] //表单配置项
+  showIndexColumn?: boolean //是否显示索引列
+  showSelectColumn?: boolean //是否显示全选列
+  childrenProps?: object // 是否有子数据，树形数据才用得到
+&#125;
+const props = withDefaults(defineProps&lt;Props&gt;(), &#123;
+  showIndexColumn: false,
+  showSelectColumn: false,
+  childrenProps: () =&gt; (&#123;&#125;)
+&#125;)
+&lt;/script&gt;
+
+&lt;style scoped&gt;&lt;/style&gt;
+</code></pre><p>user.vue</p><pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;user&quot;&gt;
+    &lt;table-test v-bind=&quot;contentTableConfig&quot; :listData=&quot;dataList&quot;&gt;&lt;/table-test&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+// 导入表单配置项
+import &#123; contentTableConfig &#125; from './config/table-config'
+import tableTest from '@/base-ui/table/table-test.vue'
+import &#123; useStore &#125; from '@/store'
+import &#123; computed &#125; from 'vue'
+const store = useStore()
+
+// 这里是网络请求数据
+const getPageData = () =&gt; &#123;
+  store.dispatch(`main/getPageListAction`, &#123;
+    queryInfo: &#123;
+      offset: 0,
+      size: 10
+    &#125;,
+    pageName: 'users'
+  &#125;)
+&#125;
+// 页面加载时第一次调用获取表单数据
+getPageData()
+const dataList = computed(() =&gt; store.getters[`main/pageListData`]('users'))
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;less&quot;&gt;&lt;/style&gt;
+</code></pre><p><img data-src="https://fastly.jsdelivr.net/gh/aaaa8880788/duck-img//blog/Vue/Element%20Plus%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/image-20220506153312738.png" alt="image-20220506153312738"></p><p>可以看到，代码抽出去了，但是我们可以发现，里面的插槽其实不能给它写死，应该是动态决定的，所以我们可以这样做</p><p>在拥有 slotName 部分的插槽列部分放入一个具名插槽，再将默认插槽列中的 scope.row 发回给具名插槽</p><p>table.vue（为了可扩展性，我依旧在里面加了两个插槽，一个顶部一个底部）</p><pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;header&quot;&gt;
+    &lt;slot name=&quot;header&quot;&gt; &lt;/slot&gt;
+  &lt;/div&gt;
+  &lt;el-table style=&quot;width: 100%&quot; :data=&quot;listData&quot; border&gt;
+    &lt;!-- 1.传入showSelectColumn时展示的全选列 --&gt;
+    &lt;template v-if=&quot;showSelectColumn&quot;&gt;
+      &lt;el-table-column type=&quot;selection&quot; /&gt;
+    &lt;/template&gt;
+    &lt;!-- 2.传入showIndexColumn时展示的序号列 --&gt;
+    &lt;template v-if=&quot;showIndexColumn&quot;&gt;
+      &lt;el-table-column type=&quot;index&quot; label=&quot;序号&quot; /&gt;
+    &lt;/template&gt;
+    &lt;!-- 3.propList里面的所有列 --&gt;
+    &lt;template v-for=&quot;item in propList&quot; :key=&quot;item.prop&quot;&gt;
+      &lt;el-table-column v-bind=&quot;item&quot; show-overflow-tooltip&gt;
+        &lt;!-- 传有slotName时展示的插槽列 --&gt;
+        &lt;template #default=&quot;scope&quot; v-if=&quot;item.slotName&quot;&gt;
+          &lt;slot :name=&quot;item.slotName&quot; :row=&quot;scope.row&quot;&gt;&lt;/slot&gt;
+        &lt;/template&gt;
+      &lt;/el-table-column&gt;
+    &lt;/template&gt;
+  &lt;/el-table&gt;
+  &lt;div class=&quot;footer&quot;&gt;
+    &lt;slot name=&quot;footer&quot;&gt; &lt;/slot&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+import &#123; defineProps, withDefaults, defineEmits &#125; from 'vue'
+import &#123; ITbaleOption &#125; from './type'
+interface Props &#123;
+  listData: any[] //表单数据
+  propList: ITbaleOption[] //表单配置项
+  showIndexColumn?: boolean //是否显示索引列
+  showSelectColumn?: boolean //是否显示全选列
+  childrenProps?: object // 是否有子数据，树形数据才用得到
+&#125;
+const props = withDefaults(defineProps&lt;Props&gt;(), &#123;
+  showIndexColumn: false,
+  showSelectColumn: false,
+  childrenProps: () =&gt; (&#123;&#125;)
+&#125;)
+&lt;/script&gt;
+
+&lt;style scoped&gt;&lt;/style&gt;
+
+</code></pre><p>然后在 user.vue 中放入具名插槽，传进去 table 组件里，同时传入一些内容到可扩展插槽里面</p><p>user.vue</p><pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;user&quot;&gt;
+    &lt;div class=&quot;content&quot;&gt;
+      &lt;table-test v-bind=&quot;contentTableConfig&quot; :listData=&quot;dataList&quot;&gt;
+        &lt;!-- 1.header中的插槽 --&gt;
+        &lt;template #header&gt;
+          &lt;div class=&quot;header-default&quot;&gt;
+            &lt;!-- 传入标题（位于左侧） --&gt;
+            &lt;div class=&quot;title&quot;&gt;用户列表&lt;/div&gt;
+            &lt;!-- 传入处理内容（位于右侧） --&gt;
+            &lt;div class=&quot;handler&quot;&gt;
+              &lt;el-button type=&quot;primary&quot; @click=&quot;addUserBtnClick&quot;
+                &gt;新建用户&lt;/el-button
+              &gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/template&gt;
+        &lt;!-- 2.该user页面独有部分 --&gt;
+        &lt;template #status=&quot;scope&quot;&gt;
+          &lt;el-button&gt;&#123;&#123; scope.row.status === 0 ? '禁用' : '启用' &#125;&#125;&lt;/el-button&gt;
+        &lt;/template&gt;
+        &lt;!-- 3.每个页面都会有的部分 --&gt;
+        &lt;template #handler=&quot;scope&quot;&gt;
+          &lt;el-button
+            size=&quot;small&quot;
+            :icon=&quot;Edit&quot;
+            type=&quot;text&quot;
+            @click=&quot;handleEditClick(scope.row)&quot;
+            &gt;编辑&lt;/el-button
+          &gt;
+          &lt;el-button
+            size=&quot;small&quot;
+            :icon=&quot;Delete&quot;
+            type=&quot;text&quot;
+            @click=&quot;deleteBtnClick(scope.row)&quot;
+            &gt;删除&lt;/el-button
+          &gt;
+        &lt;/template&gt;
+        &lt;!-- 4.footer插槽 --&gt;
+        &lt;template #footer&gt;
+          &lt;!-- 只有总条数&gt;0才会有分页器 --&gt;
+          &lt;div class=&quot;footer-default&quot;&gt;
+            &lt;el-pagination
+              :page-sizes=&quot;[100, 200, 300, 400]&quot;
+              layout=&quot;total, sizes, prev, pager, next, jumper&quot;
+              :total=&quot;400&quot;
+            /&gt;
+          &lt;/div&gt;
+        &lt;/template&gt;
+      &lt;/table-test&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+// 导入表单配置项
+import &#123; contentTableConfig &#125; from './config/table-config'
+import &#123; Delete, Edit &#125; from '@element-plus/icons-vue'
+import tableTest from '@/base-ui/table/table-test.vue'
+import &#123; useStore &#125; from '@/store'
+import &#123; computed &#125; from 'vue'
+const store = useStore()
+
+// 这里是网络请求数据
+const getPageData = () =&gt; &#123;
+  store.dispatch(`main/getPageListAction`, &#123;
+    queryInfo: &#123;
+      offset: 0,
+      size: 10
+    &#125;,
+    pageName: 'users'
+  &#125;)
+&#125;
+// 页面加载时第一次调用获取表单数据
+getPageData()
+const dataList = computed(() =&gt; store.getters[`main/pageListData`]('users'))
+
+// 点击编辑按钮触发事件
+const handleEditClick = (row: any) =&gt; &#123;
+  console.log('点击了编辑按钮，数据为：', row)
+&#125;
+// 点击删除按钮触发事件
+const deleteBtnClick = (row: any) =&gt; &#123;
+  console.log('点击了删除按钮，数据为：', row)
+&#125;
+// 点击新建用户触发事件
+const addUserBtnClick = () =&gt; &#123;
+  console.log('点击了新建用户')
+&#125;
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;less&quot;&gt;
+.content &#123;
+  border-top: 20px solid #dedee1;
+  padding: 40px;
+&#125;
+.header-default &#123;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  .title &#123;
+    font-size: 22px;
+    font-weight: 700;
+  &#125;
+&#125;
+.footer-default &#123;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+&#125;
+&lt;/style&gt;
+
+</code></pre><p><img data-src="https://fastly.jsdelivr.net/gh/aaaa8880788/duck-img//blog/Vue/Element%20Plus%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/image-20220506153326944.png" alt="image-20220506153326944"></p><p>显然此时封装已经满足需求了，但是我们发现主页面的代码页还是比较冗余，如果不用到插槽的话还好，要用到插槽的话，就要在主页面写入很多插槽，多个页面都这样的话页裂开，所以我们要像之前一样把这坨代码再封一层</p><h2 id="开始封装2-2"><a class="anchor" href="#开始封装2-2">#</a> 开始封装②</h2><p>page-table.vue</p><pre><code class="language-vue">&lt;template&gt;
+  &lt;table-test v-bind=&quot;contentTableConfig&quot; :listData=&quot;dataList&quot;&gt;
+    &lt;!-- 1.header中的插槽 --&gt;
+    &lt;template #header&gt;
+      &lt;div class=&quot;header-default&quot;&gt;
+        &lt;!-- 传入标题（位于左侧） --&gt;
+        &lt;div class=&quot;title&quot;&gt;&#123;&#123; pageNameInChinese &#125;&#125;列表&lt;/div&gt;
+        &lt;!-- 传入处理内容（位于右侧） --&gt;
+        &lt;div class=&quot;handler&quot;&gt;
+          &lt;el-button type=&quot;primary&quot; @click=&quot;addUserBtnClick&quot;
+            &gt;新建&#123;&#123; pageNameInChinese &#125;&#125;&lt;/el-button
+          &gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/template&gt;
+    &lt;!-- 2.该user页面独有部分 --&gt;
+    &lt;template #status=&quot;scope&quot;&gt;
+      &lt;el-button&gt;&#123;&#123; scope.row.status === 0 ? '禁用' : '启用' &#125;&#125;&lt;/el-button&gt;
+    &lt;/template&gt;
+    &lt;!-- 3.每个页面都会有的部分 --&gt;
+    &lt;template #handler=&quot;scope&quot;&gt;
+      &lt;el-button
+        size=&quot;small&quot;
+        :icon=&quot;Edit&quot;
+        type=&quot;text&quot;
+        @click=&quot;handleEditClick(scope.row)&quot;
+        &gt;编辑&lt;/el-button
+      &gt;
+      &lt;el-button
+        size=&quot;small&quot;
+        :icon=&quot;Delete&quot;
+        type=&quot;text&quot;
+        @click=&quot;deleteBtnClick(scope.row)&quot;
+        &gt;删除&lt;/el-button
+      &gt;
+    &lt;/template&gt;
+    &lt;!-- 4.footer插槽 --&gt;
+    &lt;template #footer&gt;
+      &lt;!-- 只有总条数&gt;0才会有分页器 --&gt;
+      &lt;div class=&quot;footer-default&quot;&gt;
+        &lt;el-pagination
+          :page-sizes=&quot;[100, 200, 300, 400]&quot;
+          layout=&quot;total, sizes, prev, pager, next, jumper&quot;
+          :total=&quot;400&quot;
+        /&gt;
+      &lt;/div&gt;
+    &lt;/template&gt;
+  &lt;/table-test&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+import &#123; Delete, Edit &#125; from '@element-plus/icons-vue'
+import tableTest from '@/base-ui/table/table-test.vue'
+import type &#123; ITable &#125; from '@/base-ui/table/type'
+
+import &#123; useStore &#125; from '@/store'
+import &#123; defineProps, computed &#125; from 'vue'
+
+// 定义属性
+interface Props &#123;
+  contentTableConfig: ITable //表单配置接收
+  pageName: string //表单名字接收
+&#125;
+const props = defineProps&lt;Props&gt;()
+
+const store = useStore()
+
+// 这里是网络请求数据
+const getPageData = () =&gt; &#123;
+  store.dispatch(`main/getPageListAction`, &#123;
+    queryInfo: &#123;
+      offset: 0,
+      size: 10
+    &#125;,
+    pageName: props.pageName
+  &#125;)
+&#125;
+// 页面加载时第一次调用获取表单数据
+getPageData()
+const dataList = computed(() =&gt;
+  store.getters[`main/pageListData`](props.pageName)
+)
+
+// 1.获取页面中文名称
+const pageNameTransform = (pageName: string): string =&gt; &#123;
+  switch (pageName) &#123;
+    case 'users':
+      return '用户'
+    default:
+      return ''
+  &#125;
+&#125;
+const pageNameInChinese = pageNameTransform(props.pageName)
+
+// 点击编辑按钮触发事件
+const handleEditClick = (row: any) =&gt; &#123;
+  console.log('点击了编辑按钮，数据为：', row)
+&#125;
+// 点击删除按钮触发事件
+const deleteBtnClick = (row: any) =&gt; &#123;
+  console.log('点击了删除按钮，数据为：', row)
+&#125;
+// 点击新建用户触发事件
+const addUserBtnClick = () =&gt; &#123;
+  console.log('点击了新建用户')
+&#125;
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;less&quot;&gt;
+.header-default &#123;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  .title &#123;
+    font-size: 22px;
+    font-weight: 700;
+  &#125;
+&#125;
+.footer-default &#123;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+&#125;
+&lt;/style&gt;
+</code></pre><p>user.vue</p><pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;user&quot;&gt;
+    &lt;div class=&quot;content&quot;&gt;
+      &lt;page-table
+        :contentTableConfig=&quot;contentTableConfig&quot;
+        pageName=&quot;users&quot;
+      &gt;&lt;/page-table&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+// 导入表单配置项
+import &#123; contentTableConfig &#125; from './config/table-config'
+import pageTable from '@/components/page-table/page-table-test.vue'
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;less&quot;&gt;
+.content &#123;
+  border-top: 20px solid #dedee1;
+  padding: 40px;
+&#125;
+&lt;/style&gt;
+
+</code></pre><p><img data-src="https://fastly.jsdelivr.net/gh/aaaa8880788/duck-img//blog/Vue/Element%20Plus%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/image-20220506153337789.png" alt="image-20220506153337789"></p><p>图中可以看出效果其实是一样的，主页面的代码少了，只需要传入配置项和 pageName（控制网络请求数据）就可以生成一个表格，但是我们可以发现，如果多个页面复用的话，其实操作列的插槽是公有的，但是状态列却是私有的，别的页面不一定有状态页，所以状态列内容插入的位置应该在主页面 user 里面而不该在封装的组件里面，而且编辑新建逻辑也是页面独有，应该在主页面执行</p><h2 id="开始封装3-2"><a class="anchor" href="#开始封装3-2">#</a> 开始封装③</h2><p>user.vue</p><pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;user&quot;&gt;
+    &lt;div class=&quot;content&quot;&gt;
+      &lt;page-table
+        :contentTableConfig=&quot;contentTableConfig&quot;
+        pageName=&quot;users&quot;
+        @editBtnClick=&quot;handleEditClick&quot;
+        @createBtnClick=&quot;handleCreateClick&quot;
+      &gt;
+        &lt;template #status=&quot;scope&quot;&gt;
+          &lt;el-button&gt;&#123;&#123; scope.row.status === 0 ? '禁用' : '启用' &#125;&#125;&lt;/el-button&gt;
+        &lt;/template&gt;
+      &lt;/page-table&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+// 导入表单配置项
+import &#123; contentTableConfig &#125; from './config/table-config'
+import pageTable from '@/components/page-table/page-table-test.vue'
+
+const handleEditClick = (row: any, pageNameInChinese: any) =&gt; &#123;
+  console.log('点击了编辑按钮，数据为：', row, pageNameInChinese)
+&#125;
+
+const handleCreateClick = (pageNameInChinese: any) =&gt; &#123;
+  console.log('点击了新建用户，数据为：', pageNameInChinese)
+&#125;
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;less&quot;&gt;
+.content &#123;
+  border-top: 20px solid #dedee1;
+  padding: 40px;
+&#125;
+&lt;/style&gt;
+
+</code></pre><p>page-table.vue</p><pre><code class="language-vue">&lt;template&gt;
+  &lt;table-test v-bind=&quot;contentTableConfig&quot; :listData=&quot;dataList&quot;&gt;
+    &lt;!-- 1.header中的插槽 --&gt;
+    &lt;template #header&gt;
+      &lt;div class=&quot;header-default&quot;&gt;
+        &lt;!-- 传入标题（位于左侧） --&gt;
+        &lt;div class=&quot;title&quot;&gt;&#123;&#123; pageNameInChinese &#125;&#125;列表&lt;/div&gt;
+        &lt;!-- 传入处理内容（位于右侧） --&gt;
+        &lt;div class=&quot;handler&quot;&gt;
+          &lt;el-button type=&quot;primary&quot; @click=&quot;addUserBtnClick&quot;
+            &gt;新建&#123;&#123; pageNameInChinese &#125;&#125;&lt;/el-button
+          &gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/template&gt;
+    &lt;!-- 2.该user页面独有部分 --&gt;
+    &lt;template
+      v-for=&quot;item in otherPropSlots&quot;
+      :key=&quot;item.prop&quot;
+      #[item.slotName]=&quot;scope&quot;
+    &gt;
+      &lt;template v-if=&quot;item.slotName&quot;&gt;
+        &lt;slot :name=&quot;item.slotName&quot; :row=&quot;scope.row&quot;&gt;&lt;/slot&gt;
+      &lt;/template&gt;
+    &lt;/template&gt;
+    &lt;!-- 3.每个页面都会有的部分 --&gt;
+    &lt;template #handler=&quot;scope&quot;&gt;
+      &lt;el-button
+        size=&quot;small&quot;
+        :icon=&quot;Edit&quot;
+        type=&quot;text&quot;
+        @click=&quot;handleEditClick(scope.row)&quot;
+        &gt;编辑&lt;/el-button
+      &gt;
+      &lt;el-button
+        size=&quot;small&quot;
+        :icon=&quot;Delete&quot;
+        type=&quot;text&quot;
+        @click=&quot;deleteBtnClick(scope.row)&quot;
+        &gt;删除&lt;/el-button
+      &gt;
+    &lt;/template&gt;
+    &lt;!-- 4.footer插槽 --&gt;
+    &lt;template #footer&gt;
+      &lt;!-- 只有总条数&gt;0才会有分页器 --&gt;
+      &lt;div class=&quot;footer-default&quot;&gt;
+        &lt;el-pagination
+          :page-sizes=&quot;[100, 200, 300, 400]&quot;
+          layout=&quot;total, sizes, prev, pager, next, jumper&quot;
+          :total=&quot;400&quot;
+        /&gt;
+      &lt;/div&gt;
+    &lt;/template&gt;
+  &lt;/table-test&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+import &#123; Delete, Edit &#125; from '@element-plus/icons-vue'
+import tableTest from '@/base-ui/table/table-test.vue'
+import type &#123; ITable &#125; from '@/base-ui/table/type'
+
+import &#123; useStore &#125; from '@/store'
+import &#123; defineProps, computed, defineEmits &#125; from 'vue'
+
+// 定义属性
+interface Props &#123;
+  contentTableConfig: ITable //表单配置接收
+  pageName: string //表单名字接收
+&#125;
+const props = defineProps&lt;Props&gt;()
+const emit = defineEmits&lt;&#123;
+  (e: 'createBtnClick', pageNameInChinese: string): void
+  (e: 'editBtnClick', rowData: any, pageNameInChinese: string): void
+&#125;&gt;()
+
+const store = useStore()
+
+// 这里是网络请求数据
+const getPageData = () =&gt; &#123;
+  store.dispatch(`main/getPageListAction`, &#123;
+    queryInfo: &#123;
+      offset: 0,
+      size: 10
+    &#125;,
+    pageName: props.pageName
+  &#125;)
+&#125;
+// 页面加载时第一次调用获取表单数据
+getPageData()
+const dataList = computed(() =&gt;
+  store.getters[`main/pageListData`](props.pageName)
+)
+
+// 1.获取页面中文名称
+const pageNameTransform = (pageName: string): string =&gt; &#123;
+  switch (pageName) &#123;
+    case 'users':
+      return '用户'
+    default:
+      return ''
+  &#125;
+&#125;
+const pageNameInChinese = pageNameTransform(props.pageName)
+
+// 2.属于动态插槽的配置项筛选
+const otherPropSlots: any = props.contentTableConfig?.propList.filter(
+  (item: any) =&gt; &#123;
+    if (item.slotName === 'handler') return false
+    return item.slotName
+  &#125;
+)
+
+// 点击编辑按钮触发事件
+const handleEditClick = (row: any) =&gt; &#123;
+  emit('editBtnClick', row, pageNameInChinese)
+&#125;
+// 点击删除按钮触发事件
+const deleteBtnClick = (row: any) =&gt; &#123;
+  console.log('点击了删除按钮，数据为：', row)
+&#125;
+// 点击新建用户触发事件
+const addUserBtnClick = () =&gt; &#123;
+  emit('createBtnClick', pageNameInChinese)
+&#125;
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;less&quot;&gt;
+.header-default &#123;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  .title &#123;
+    font-size: 22px;
+    font-weight: 700;
+  &#125;
+&#125;
+.footer-default &#123;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+&#125;
+&lt;/style&gt;
+
+</code></pre><p><img data-src="https://fastly.jsdelivr.net/gh/aaaa8880788/duck-img//blog/Vue/Element%20Plus%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/image-20220506153348571.png" alt="image-20220506153348571"></p><p>可以看到，这时我们已经把独有私有的插槽区分开了，而且编辑和新建的逻辑也在主页面中执行，封装完毕，下面附上完整代码</p><h2 id="完整封装代码4"><a class="anchor" href="#完整封装代码4">#</a> 完整封装代码④</h2><h3 id="配置项类型文件-2"><a class="anchor" href="#配置项类型文件-2">#</a> 配置项类型文件</h3><figure class="highlight typescript"><figcaption data-lang="typescript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">ITbaleOption</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>  prop<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  label<span class="token operator">:</span> <span class="token builtin">string</span></pre></td></tr><tr><td data-num="4"></td><td><pre>  minWidth<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span></pre></td></tr><tr><td data-num="5"></td><td><pre>  slotName<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span></pre></td></tr><tr><td data-num="6"></td><td><pre>  align<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">ITable</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>  propList<span class="token operator">:</span> ITbaleOption<span class="token punctuation">[</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="10"></td><td><pre>  showIndexColumn<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">boolean</span></pre></td></tr><tr><td data-num="11"></td><td><pre>  showSelectColumn<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">boolean</span></pre></td></tr><tr><td data-num="12"></td><td><pre>  childrenProps<span class="token operator">?</span><span class="token operator">:</span> object</pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><h3 id="配置项文件-2"><a class="anchor" href="#配置项文件-2">#</a> 配置项文件</h3><figure class="highlight typescript"><figcaption data-lang="typescript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> ITable <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'@/base-ui/table/type'</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">const</span> contentTableConfig<span class="token operator">:</span> ITable <span class="token operator">=</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  <span class="token comment">// 表格配置</span></pre></td></tr><tr><td data-num="4"></td><td><pre>  propList<span class="token operator">:</span> <span class="token punctuation">[</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    <span class="token punctuation">&#123;</span> prop<span class="token operator">:</span> <span class="token string">'id'</span><span class="token punctuation">,</span> label<span class="token operator">:</span> <span class="token string">'用户id'</span><span class="token punctuation">,</span> minWidth<span class="token operator">:</span> <span class="token string">'100'</span><span class="token punctuation">,</span> align<span class="token operator">:</span> <span class="token string">'center'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token punctuation">&#123;</span> prop<span class="token operator">:</span> <span class="token string">'name'</span><span class="token punctuation">,</span> label<span class="token operator">:</span> <span class="token string">'用户名'</span><span class="token punctuation">,</span> minWidth<span class="token operator">:</span> <span class="token string">'100'</span><span class="token punctuation">,</span> align<span class="token operator">:</span> <span class="token string">'center'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token punctuation">&#123;</span> prop<span class="token operator">:</span> <span class="token string">'realname'</span><span class="token punctuation">,</span> label<span class="token operator">:</span> <span class="token string">'真实姓名'</span><span class="token punctuation">,</span> minWidth<span class="token operator">:</span> <span class="token string">'100'</span><span class="token punctuation">,</span> align<span class="token operator">:</span> <span class="token string">'center'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token punctuation">&#123;</span> prop<span class="token operator">:</span> <span class="token string">'cellphone'</span><span class="token punctuation">,</span> label<span class="token operator">:</span> <span class="token string">'手机号码'</span><span class="token punctuation">,</span> minWidth<span class="token operator">:</span> <span class="token string">'100'</span><span class="token punctuation">,</span> align<span class="token operator">:</span> <span class="token string">'center'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="9"></td><td><pre>    <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>      prop<span class="token operator">:</span> <span class="token string">'enable'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="11"></td><td><pre>      label<span class="token operator">:</span> <span class="token string">'状态'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="12"></td><td><pre>      minWidth<span class="token operator">:</span> <span class="token string">'100'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="13"></td><td><pre>      slotName<span class="token operator">:</span> <span class="token string">'status'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="14"></td><td><pre>      align<span class="token operator">:</span> <span class="token string">'center'</span></pre></td></tr><tr><td data-num="15"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="16"></td><td><pre>    <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>      label<span class="token operator">:</span> <span class="token string">'操作'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="18"></td><td><pre>      minWidth<span class="token operator">:</span> <span class="token string">'120'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="19"></td><td><pre>      slotName<span class="token operator">:</span> <span class="token string">'handler'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="20"></td><td><pre>      align<span class="token operator">:</span> <span class="token string">'center'</span></pre></td></tr><tr><td data-num="21"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="22"></td><td><pre>  <span class="token punctuation">]</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="23"></td><td><pre>  <span class="token comment">// 表格具有序号列</span></pre></td></tr><tr><td data-num="24"></td><td><pre>  showIndexColumn<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="25"></td><td><pre>  <span class="token comment">// 表格具有可选列</span></pre></td></tr><tr><td data-num="26"></td><td><pre>  showSelectColumn<span class="token operator">:</span> <span class="token boolean">true</span></pre></td></tr><tr><td data-num="27"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><h3 id="table表单组件文件"><a class="anchor" href="#table表单组件文件">#</a> table 表单组件文件</h3><pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;header&quot;&gt;
+    &lt;slot name=&quot;header&quot;&gt; &lt;/slot&gt;
+  &lt;/div&gt;
+  &lt;el-table style=&quot;width: 100%&quot; :data=&quot;listData&quot; border&gt;
+    &lt;!-- 1.传入showSelectColumn时展示的全选列 --&gt;
+    &lt;template v-if=&quot;showSelectColumn&quot;&gt;
+      &lt;el-table-column type=&quot;selection&quot; /&gt;
+    &lt;/template&gt;
+    &lt;!-- 2.传入showIndexColumn时展示的序号列 --&gt;
+    &lt;template v-if=&quot;showIndexColumn&quot;&gt;
+      &lt;el-table-column type=&quot;index&quot; label=&quot;序号&quot; /&gt;
+    &lt;/template&gt;
+    &lt;!-- 3.propList里面的所有列 --&gt;
+    &lt;template v-for=&quot;item in propList&quot; :key=&quot;item.prop&quot;&gt;
+      &lt;el-table-column v-bind=&quot;item&quot; show-overflow-tooltip&gt;
+        &lt;!-- 传有slotName时展示的插槽列 --&gt;
+        &lt;template #default=&quot;scope&quot; v-if=&quot;item.slotName&quot;&gt;
+          &lt;slot :name=&quot;item.slotName&quot; :row=&quot;scope.row&quot;&gt;&lt;/slot&gt;
+        &lt;/template&gt;
+      &lt;/el-table-column&gt;
+    &lt;/template&gt;
+  &lt;/el-table&gt;
+  &lt;div class=&quot;footer&quot;&gt;
+    &lt;slot name=&quot;footer&quot;&gt; &lt;/slot&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+import &#123; defineProps, withDefaults, defineEmits &#125; from 'vue'
+import &#123; ITbaleOption &#125; from './type'
+interface Props &#123;
+  listData: any[] //表单数据
+  propList: ITbaleOption[] //表单配置项
+  showIndexColumn?: boolean //是否显示索引列
+  showSelectColumn?: boolean //是否显示全选列
+  childrenProps?: object // 是否有子数据，树形数据才用得到
+&#125;
+const props = withDefaults(defineProps&lt;Props&gt;(), &#123;
+  showIndexColumn: false,
+  showSelectColumn: false,
+  childrenProps: () =&gt; (&#123;&#125;)
+&#125;)
+&lt;/script&gt;
+
+&lt;style scoped&gt;&lt;/style&gt;
+
+</code></pre><h3 id="page-table组件文件"><a class="anchor" href="#page-table组件文件">#</a> page-table 组件文件</h3><h3 id="user页面组件文件"><a class="anchor" href="#user页面组件文件">#</a> user 页面组件文件</h3><pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;user&quot;&gt;
+    &lt;div class=&quot;content&quot;&gt;
+      &lt;page-table
+        :contentTableConfig=&quot;contentTableConfig&quot;
+        pageName=&quot;users&quot;
+        @editBtnClick=&quot;handleEditClick&quot;
+        @createBtnClick=&quot;handleCreateClick&quot;
+      &gt;
+        &lt;template #status=&quot;scope&quot;&gt;
+          &lt;el-button&gt;&#123;&#123; scope.row.status === 0 ? '禁用' : '启用' &#125;&#125;&lt;/el-button&gt;
+        &lt;/template&gt;
+      &lt;/page-table&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+// 导入表单配置项
+import &#123; contentTableConfig &#125; from './config/table-config'
+import pageTable from '@/components/page-table/page-table-test.vue'
+
+const handleEditClick = (row: any, pageNameInChinese: any) =&gt; &#123;
+  console.log('点击了编辑按钮，数据为：', row, pageNameInChinese)
+&#125;
+
+const handleCreateClick = (pageNameInChinese: any) =&gt; &#123;
+  console.log('点击了新建用户，数据为：', pageNameInChinese)
+&#125;
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;less&quot;&gt;
+.content &#123;
+  border-top: 20px solid #dedee1;
+  padding: 40px;
+&#125;
+&lt;/style&gt;
+
+</code></pre><h1 id="结语-2"><a class="anchor" href="#结语-2">#</a> 结语</h1><p>刚学会的代码思路与写法，花了一天整理，主要还是自己记录一下，颇有收获，感觉大佬分享使我进步～虽然还是很菜....</p><div class="tags"><a href="/tags/Vue3/" rel="tag"><i class="ic i-tag"></i> Vue3</a> <a href="/tags/TypeScript/" rel="tag"><i class="ic i-tag"></i> TypeScript</a> <a href="/tags/Element-Plus/" rel="tag"><i class="ic i-tag"></i> Element Plus</a></div></div><footer><div class="meta"></div><div class="reward"><button><i class="ic i-heartbeat"></i> 赞赏</button><p>请我喝[茶]~(￣▽￣)~*</p><div id="qr"><div><img data-src="/images/wechatpay.png" alt="呆头鸭 微信支付"><p>微信支付</p></div><div><img data-src="/images/alipay.png" alt="呆头鸭 支付宝"><p>支付宝</p></div></div></div><div id="copyright"><ul><li class="author"><strong>本文作者： </strong>呆头鸭 <i class="ic i-at"><em>@</em></i>键盘敲烂，月薪过万，冲！</li><li class="link"><strong>本文链接：</strong> <a href="https://aaaa8880788.github.io/vue/Vue3+Element%20Plus%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/" title="Vue3+Element Plus组件二次封装">https://aaaa8880788.github.io/vue/Vue3+Element Plus组件二次封装/</a></li><li class="license"><strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/vue/Vue2%E7%88%B6%E5%85%83%E7%B4%A0displayflex%E5%B8%83%E5%B1%80%E4%B8%8B%E7%9A%84%E5%AD%90%E5%85%83%E7%B4%A0%E5%AE%BD%E5%BA%A6%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;7dad57904e56f14df7975109aaf03bc2.jpg" title="Vue2中用flex后子元素失效问题"><span class="type">上一篇</span> <span class="category"><i class="ic i-flag"></i> Vue</span><h3>Vue2中用flex后子元素失效问题</h3></a></div><div class="item right"><a href="/vue/Vue3Element%20plus%E7%9A%84Form%E8%A1%A8%E5%8D%95%E4%B8%AD%E7%9A%84resetFields%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;479813b22cea266a12445d3c8d5ce5cf.jpg" title="Vue3中Element Plus中Form表单resetFields方法失效"><span class="type">下一篇</span> <span class="category"><i class="ic i-flag"></i> Vue</span><h3>Vue3中Element Plus中Form表单resetFields方法失效</h3></a></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#element-plus%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">Element Plus 组件二次封装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">2.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#form%E8%A1%A8%E5%8D%95%E7%9A%84%E5%B0%81%E8%A3%85"><span class="toc-number">3.</span> <span class="toc-text">Form 表单的封装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0"><span class="toc-number">3.1.</span> <span class="toc-text">简述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%B8%B8%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">3.2.</span> <span class="toc-text">正常的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E5%B0%81%E8%A3%851"><span class="toc-number">3.3.</span> <span class="toc-text">开始封装①</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E5%B0%81%E8%A3%852"><span class="toc-number">3.4.</span> <span class="toc-text">开始封装②</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E5%B0%81%E8%A3%853"><span class="toc-number">3.5.</span> <span class="toc-text">开始封装③</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E5%B0%81%E8%A3%854"><span class="toc-number">3.6.</span> <span class="toc-text">开始封装④</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E5%B0%81%E8%A3%85%E4%BB%A3%E7%A0%815"><span class="toc-number">3.7.</span> <span class="toc-text">完整封装代码⑤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%B1%BB%E5%9E%8B%E6%96%87%E4%BB%B6"><span class="toc-number">3.7.1.</span> <span class="toc-text">配置项类型文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%A1%B9%E6%96%87%E4%BB%B6"><span class="toc-number">3.7.2.</span> <span class="toc-text">配置项文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#form%E8%A1%A8%E5%8D%95%E7%BB%84%E4%BB%B6%E6%96%87%E4%BB%B6"><span class="toc-number">3.7.3.</span> <span class="toc-text">form 表单组件文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#page-search%E7%BB%84%E4%BB%B6%E6%96%87%E4%BB%B6"><span class="toc-number">3.7.4.</span> <span class="toc-text">page-search 组件文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#role%E9%A1%B5%E9%9D%A2%E7%BB%84%E4%BB%B6%E6%96%87%E4%BB%B6"><span class="toc-number">3.7.5.</span> <span class="toc-text">role 页面组件文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-number">3.8.</span> <span class="toc-text">结语</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#table%E8%A1%A8%E6%A0%BC%E7%9A%84%E5%B0%81%E8%A3%85"><span class="toc-number">4.</span> <span class="toc-text">Table 表格的封装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0-2"><span class="toc-number">4.1.</span> <span class="toc-text">简述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%B8%B8%E4%BD%BF%E7%94%A8"><span class="toc-number">4.2.</span> <span class="toc-text">正常使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E5%B0%81%E8%A3%851-2"><span class="toc-number">4.3.</span> <span class="toc-text">开始封装①</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E5%B0%81%E8%A3%852-2"><span class="toc-number">4.4.</span> <span class="toc-text">开始封装②</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E5%B0%81%E8%A3%853-2"><span class="toc-number">4.5.</span> <span class="toc-text">开始封装③</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E5%B0%81%E8%A3%85%E4%BB%A3%E7%A0%814"><span class="toc-number">4.6.</span> <span class="toc-text">完整封装代码④</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%B1%BB%E5%9E%8B%E6%96%87%E4%BB%B6-2"><span class="toc-number">4.6.1.</span> <span class="toc-text">配置项类型文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%A1%B9%E6%96%87%E4%BB%B6-2"><span class="toc-number">4.6.2.</span> <span class="toc-text">配置项文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#table%E8%A1%A8%E5%8D%95%E7%BB%84%E4%BB%B6%E6%96%87%E4%BB%B6"><span class="toc-number">4.6.3.</span> <span class="toc-text">table 表单组件文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#page-table%E7%BB%84%E4%BB%B6%E6%96%87%E4%BB%B6"><span class="toc-number">4.6.4.</span> <span class="toc-text">page-table 组件文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#user%E9%A1%B5%E9%9D%A2%E7%BB%84%E4%BB%B6%E6%96%87%E4%BB%B6"><span class="toc-number">4.6.5.</span> <span class="toc-text">user 页面组件文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD-2"><span class="toc-number">5.</span> <span class="toc-text">结语</span></a></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li><a href="/vue/Vue2%E4%B8%AD%E5%86%99%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E5%AE%9A%E6%97%B6%E5%99%A8/" rel="bookmark" title="Vue2实现定时器效果">Vue2实现定时器效果</a></li><li><a href="/vue/Vue2%E4%B8%AD%E5%AE%9E%E7%8E%B0%E9%AA%8C%E8%AF%81%E7%A0%81%E7%99%BB%E5%BD%95/" rel="bookmark" title="Vue2中实现伪验证码登录">Vue2中实现伪验证码登录</a></li><li><a href="/vue/Vue2%E4%B8%AD%E5%B0%81%E8%A3%85%E4%B8%80%E4%B8%AA%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8%E6%8C%89%E9%92%AE/" rel="bookmark" title="Vue2中封装一个返回顶部按钮">Vue2中封装一个返回顶部按钮</a></li><li><a href="/vue/Vue2%E4%B8%AD%E8%B7%AF%E7%94%B1%E5%88%87%E6%8D%A2%E9%A1%B5%E9%9D%A2%E5%8A%A8%E7%94%BB/" rel="bookmark" title="Vue2实现路由切换动画">Vue2实现路由切换动画</a></li><li><a href="/vue/Vue2%E7%88%B6%E5%85%83%E7%B4%A0displayflex%E5%B8%83%E5%B1%80%E4%B8%8B%E7%9A%84%E5%AD%90%E5%85%83%E7%B4%A0%E5%AE%BD%E5%BA%A6%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/" rel="bookmark" title="Vue2中用flex后子元素失效问题">Vue2中用flex后子元素失效问题</a></li><li><a href="/vue/Vue2%E5%85%A8%E5%B1%80%E8%BF%87%E6%BB%A4%E5%99%A8%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E4%BD%BF%E7%94%A8/" rel="bookmark" title="Vue2全局过滤器的定义与使用">Vue2全局过滤器的定义与使用</a></li><li><a href="/vue/Vue2%E4%BD%BF%E7%94%A8Swiper/" rel="bookmark" title="Swiper在vue2中的使用">Swiper在vue2中的使用</a></li><li class="active"><a href="/vue/Vue3+Element%20Plus%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/" rel="bookmark" title="Vue3+Element Plus组件二次封装">Vue3+Element Plus组件二次封装</a></li><li><a href="/vue/Vue3+Ts%E5%AE%9E%E7%8E%B0%E9%80%89%E4%B8%AD%E5%8C%BA%E9%97%B4%E4%B8%94%E5%8C%BA%E9%97%B4%E5%86%85%E9%AB%98%E4%BA%AE/" rel="bookmark" title="Vue3+Ts实现选中区间且区间内高亮">Vue3+Ts实现选中区间且区间内高亮</a></li><li><a href="/vue/Vue3+Ts%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%B0%81%E8%A3%85axios/" rel="bookmark" title="Vue3+ts封装axios">Vue3+ts封装axios</a></li><li><a href="/vue/Vue3Element%20plus%E7%9A%84Form%E8%A1%A8%E5%8D%95%E4%B8%AD%E7%9A%84resetFields%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/" rel="bookmark" title="Vue3中Element Plus中Form表单resetFields方法失效">Vue3中Element Plus中Form表单resetFields方法失效</a></li><li><a href="/vue/Vue3%E4%B8%ADts%E7%9A%84%E5%B7%A7%E5%A6%99%E4%BD%BF%E7%94%A8/" rel="bookmark" title="Vue3中Ts的使用技巧">Vue3中Ts的使用技巧</a></li><li><a href="/vue/Vue3%E4%B8%AD%E5%B0%81%E8%A3%85useMapper%E5%87%BD%E6%95%B0%EF%BC%88Vuex%EF%BC%89/" rel="bookmark" title="Vue3中封装useMapper函数（Vuex）">Vue3中封装useMapper函数（Vuex）</a></li><li><a href="/vue/Vue3%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%EF%BC%88%E6%9D%83%E9%99%90%E8%8F%9C%E5%8D%95%EF%BC%89/" rel="bookmark" title="Vue3+Ts中实现动态路由菜单">Vue3+Ts中实现动态路由菜单</a></li><li><a href="/vue/Vue%E4%B8%ADrender%E7%9A%84%E4%BD%BF%E7%94%A8%E4%BB%B7%E5%80%BC/" rel="bookmark" title="Vue中render的使用价值">Vue中render的使用价值</a></li><li><a href="/vue/Vue3%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%BC%80%E5%8F%91%E9%98%B6%E6%AE%B5%E9%81%87%E5%88%B0%E8%B7%A8%E5%9F%9F/" rel="bookmark" title="Vue3中开发阶段跨域解决">Vue3中开发阶段跨域解决</a></li><li><a href="/vue/Vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E6%B5%81%E7%A8%8B/" rel="bookmark" title="Vue3项目搭建流程">Vue3项目搭建流程</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="image" itemprop="image" alt="呆头鸭" data-src="/images/avatar.jpg"><p class="name" itemprop="name">呆头鸭</p><div class="description" itemprop="description">每天进步一点点~</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">34</span> <span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">7</span> <span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">20</span> <span class="name">标签</span></a></div></nav><div class="social"><span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FhYWE4ODgwNzg4" title="https:&#x2F;&#x2F;github.com&#x2F;aaaa8880788"><i class="ic i-github"></i></span> <span class="exturl item qq" data-url="aHR0cHM6Ly9mYXN0bHkuanNkZWxpdnIubmV0L2doL2FhYWE4ODgwNzg4L2R1Y2staW1nL2Jsb2cvcHJpdmF0ZS9xcS5qcGc=" title="https:&#x2F;&#x2F;fastly.jsdelivr.net&#x2F;gh&#x2F;aaaa8880788&#x2F;duck-img&#x2F;blog&#x2F;private&#x2F;qq.jpg"><i class="ic i-qq"></i></span> <span class="exturl item weixin" data-url="aHR0cHM6Ly9mYXN0bHkuanNkZWxpdnIubmV0L2doL2FhYWE4ODgwNzg4L2R1Y2staW1nL2Jsb2cvcHJpdmF0ZS93ZWNoYXQuanBn" title="https:&#x2F;&#x2F;fastly.jsdelivr.net&#x2F;gh&#x2F;aaaa8880788&#x2F;duck-img&#x2F;blog&#x2F;private&#x2F;wechat.jpg"><i class="ic i-weixin"></i></span></div><ul class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item"><a href="/about/" rel="section"><i class="ic i-user"></i>关于</a></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li></ul></li></ul></div></div></div><ul id="quick"><li class="prev pjax"><a href="/vue/Vue2%E7%88%B6%E5%85%83%E7%B4%A0displayflex%E5%B8%83%E5%B1%80%E4%B8%8B%E7%9A%84%E5%AD%90%E5%85%83%E7%B4%A0%E5%AE%BD%E5%BA%A6%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/vue/Vue3Element%20plus%E7%9A%84Form%E8%A1%A8%E5%8D%95%E4%B8%AD%E7%9A%84resetFields%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/bywork-explore/" title="分类于 bywork-explore">bywork-explore</a></div><span><a href="/bywork-explore/172%E5%8F%B7%E5%8D%A1%E6%B3%A8%E5%86%8C%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B/" title="172号卡注册及使用流程">172号卡注册及使用流程</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/web-interview/" title="分类于 前端面试">前端面试</a></div><span><a href="/web-interview/07.Vue/" title="Vue">Vue</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/vue/" title="分类于 Vue">Vue</a></div><span><a href="/vue/Vue3%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%BC%80%E5%8F%91%E9%98%B6%E6%AE%B5%E9%81%87%E5%88%B0%E8%B7%A8%E5%9F%9F/" title="Vue3中开发阶段跨域解决">Vue3中开发阶段跨域解决</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/web-interview/" title="分类于 前端面试">前端面试</a></div><span><a href="/web-interview/2022%E5%B9%B4%E6%9C%80%E6%96%B0%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="2022最新前端八股文汇总">2022最新前端八股文汇总</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/project/" title="分类于 项目">项目</a></div><span><a href="/project/Vue3-ts-shop/" title="Vue3-ts-shop项目记录">Vue3-ts-shop项目记录</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/vue/" title="分类于 Vue">Vue</a></div><span><a href="/vue/Vue3+Element%20Plus%E7%BB%84%E4%BB%B6%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/" title="Vue3+Element Plus组件二次封装">Vue3+Element Plus组件二次封装</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/vue/" title="分类于 Vue">Vue</a></div><span><a href="/vue/Vue2%E5%85%A8%E5%B1%80%E8%BF%87%E6%BB%A4%E5%99%A8%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E4%BD%BF%E7%94%A8/" title="Vue2全局过滤器的定义与使用">Vue2全局过滤器的定义与使用</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/web-interview/" title="分类于 前端面试">前端面试</a></div><span><a href="/web-interview/04.JavaScript/" title="Javascript">Javascript</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/web-interview/" title="分类于 前端面试">前端面试</a></div><span><a href="/web-interview/01.%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="计算机网络">计算机网络</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/git/" title="分类于 Git">Git</a></div><span><a href="/git/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="git的常用命令">git的常用命令</a></span></li></ul></div></div><div class="status"><div class="copyright">&copy; 2022 – <span itemprop="copyrightYear">2024</span> <span class="with-love"><i class="ic i-sakura rotate"></i> </span><span class="author" itemprop="copyrightHolder">呆头鸭 @ 呆头鸭</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i> </span><span title="站点总字数">278k 字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="ic i-coffee"></i> </span><span title="站点阅读时长">4:13</span></div><div class="powered-by">基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL={path:"vue/Vue3+Element Plus组件二次封装/",favicon:{show:"（●´3｀●）やれやれだぜ",hide:"(´Д｀)大変だ！"},search:{placeholder:"文章搜索",empty:"关于 「 ${query} 」，什么也没搜到",stats:"${time} ms 内找到 ${hits} 条结果"},valine:!0,fancybox:!0,copyright:'复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',ignores:[function(e){return e.includes("#")},function(e){return new RegExp(LOCAL.path+"$").test(e)}]}</script><script src="https://cdn.polyfill.io/v2/polyfill.js"></script><script src="//fastly.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script><script src="/js/app.js?v=0.2.5"></script></body></html>
