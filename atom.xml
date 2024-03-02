@@ -4884,6 +4884,48 @@ Websocket 实现了客户端与服务端的双向通信，只需要连接一次�
         <updated>2024-03-02T02:52:21.678Z</updated>
     </entry>
     <entry>
+        <id>https://aaaa8880788.github.io/vue/Vue3%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%BC%80%E5%8F%91%E9%98%B6%E6%AE%B5%E9%81%87%E5%88%B0%E8%B7%A8%E5%9F%9F/</id>
+        <title>Vue3中开发阶段跨域解决</title>
+        <link rel="alternate" href="https://aaaa8880788.github.io/vue/Vue3%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%BC%80%E5%8F%91%E9%98%B6%E6%AE%B5%E9%81%87%E5%88%B0%E8%B7%A8%E5%9F%9F/"/>
+        <content type="html">&lt;h1 id=&#34;vue3项目中开发阶段遇到跨域&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vue3项目中开发阶段遇到跨域&#34;&gt;#&lt;/a&gt; Vue3 项目中开发阶段遇到跨域&lt;/h1&gt;
+&lt;p&gt;可以在 vue.config.json 中配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;devServer: &amp;#123;
+  proxy:&amp;#123;
+    &#39;^/api&#39;:&amp;#123;
+      target:&#39;http://XX.XX.XX.XX:XXXX&#39;,
+      pathRewrite:&amp;#123;
+        &#39;^api&#39;:&#39;&#39;
+      &amp;#125;,
+      changeOrigin:true
+    &amp;#125;
+  &amp;#125;
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;module.exports = defineConfig(&amp;#123;
+  transpileDependencies: true,
+  outputDir: &#39;./build&#39;,
+  // 位置放这里,配置好后需要去把baseURL设置成 BASE_URL = &#39;/api&#39;,原本是BASE_URL = &#39;http://XX.XX.XX.XX:XXXX&#39;
+  devServer: &amp;#123;
+    proxy:&amp;#123;
+     &#39;^/api&#39;:&amp;#123;
+      target:&#39;http://XX.XX.XX.XX:XXXX&#39;,
+      pathRewrite:&amp;#123;
+        &#39;^api&#39;:&#39;&#39;
+      &amp;#125;,
+      changeOrigin:true
+    &amp;#125;
+  &amp;#125;
+&amp;#125;
+&amp;#125;)
+
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+        <category term="Vue" scheme="https://aaaa8880788.github.io/categories/vue/" />
+        <category term="Vue3" scheme="https://aaaa8880788.github.io/tags/Vue3/" />
+        <category term="跨域" scheme="https://aaaa8880788.github.io/tags/%E8%B7%A8%E5%9F%9F/" />
+        <updated>2024-03-02T02:52:21.670Z</updated>
+    </entry>
+    <entry>
         <id>https://aaaa8880788.github.io/vue/Vue3%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%EF%BC%88%E6%9D%83%E9%99%90%E8%8F%9C%E5%8D%95%EF%BC%89/</id>
         <title>Vue3+Ts中实现动态路由菜单</title>
         <link rel="alternate" href="https://aaaa8880788.github.io/vue/Vue3%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%EF%BC%88%E6%9D%83%E9%99%90%E8%8F%9C%E5%8D%95%EF%BC%89/"/>
@@ -4944,200 +4986,8 @@ app.mount(&#39;#app&#39;)
 &lt;/code&gt;&lt;/pre&gt;
 </content>
         <category term="Vue" scheme="https://aaaa8880788.github.io/categories/vue/" />
-        <category term="Vue3" scheme="https://aaaa8880788.github.io/tags/Vue3/" />
         <category term="TypeScript" scheme="https://aaaa8880788.github.io/tags/TypeScript/" />
-        <updated>2024-03-02T02:52:21.670Z</updated>
-    </entry>
-    <entry>
-        <id>https://aaaa8880788.github.io/vue/Vue%E4%B8%ADrender%E7%9A%84%E4%BD%BF%E7%94%A8%E4%BB%B7%E5%80%BC/</id>
-        <title>Vue中render的使用价值</title>
-        <link rel="alternate" href="https://aaaa8880788.github.io/vue/Vue%E4%B8%ADrender%E7%9A%84%E4%BD%BF%E7%94%A8%E4%BB%B7%E5%80%BC/"/>
-        <content type="html">&lt;h2 id=&#34;vue中render的使用价值&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vue中render的使用价值&#34;&gt;#&lt;/a&gt;  &lt;code&gt;Vue&lt;/code&gt;  中 render 的使用价值&lt;/h2&gt;
-&lt;h2 id=&#34;场景&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#场景&#34;&gt;#&lt;/a&gt; 场景&lt;/h2&gt;
-&lt;p&gt;假设说是低代码平台配置好的表单渲染，亦或者说自己封装的一个表单组件，通过传配置项来渲染，一般我们会怎么做呢？&lt;/p&gt;
-&lt;h2 id=&#34;常规做法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#常规做法&#34;&gt;#&lt;/a&gt; 常规做法&lt;/h2&gt;
-&lt;pre&gt;&lt;code class=&#34;language-vue&#34;&gt;&amp;lt;template&amp;gt;
-  &amp;lt;div class=&amp;quot;wrapper&amp;quot;&amp;gt;
-    &amp;lt;div  
-      v-for=&amp;quot;item in item&amp;quot;
-      :key=&amp;quot;item.id&amp;quot;&amp;gt;
-      &amp;lt;template v-if=&amp;quot;item.type === &#39;input&#39;&amp;quot;&amp;gt;
-        &amp;lt;input&amp;gt;&amp;lt;/input&amp;gt;
-      &amp;lt;/template&amp;gt;
-      &amp;lt;template v-else-if=&amp;quot;item.type === &#39;select&#39;&amp;quot;&amp;gt;
-        &amp;lt;select&amp;gt;&amp;lt;/select&amp;gt;
-      &amp;lt;/template&amp;gt;
-    &amp;lt;/div&amp;gt;
-  &amp;lt;/div&amp;gt;
-&amp;lt;/template&amp;gt;
-
-&amp;lt;script&amp;gt;
-  import input from &#39;@/component/input&#39;
-  import select from &#39;@/component/select&#39;
-  export default &amp;#123;
-    data()&amp;#123;
-      return &amp;#123;
-        item:[
-          &amp;#123;
-            id:&#39;1&#39;
-            type:&#39;input&#39;
-          &amp;#125;,
-          &amp;#123;
-            id:&#39;2&#39;
-            type:&#39;select&#39;
-          &amp;#125;
-        ]
-      &amp;#125;
-    &amp;#125;,
-    components:&amp;#123;
-      input,
-      select
-    &amp;#125;
-  &amp;#125;
-&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;说明&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#说明&#34;&gt;#&lt;/a&gt; 说明&lt;/h2&gt;
-&lt;p&gt;从以上代码可以看出，如果说，我们有 30 个 &lt;code&gt;type&lt;/code&gt; ，那我们就必须用 &lt;code&gt;import&lt;/code&gt;  导入 30 个组件，在 &lt;code&gt;compoents&lt;/code&gt;  里面注册 30 个组件，在模板里面写 30 个 &lt;code&gt;template&lt;/code&gt; + &lt;code&gt;v-if&lt;/code&gt; ，越多代码只会越来越冗余，但是我们用 render 的方式来渲染呢？&lt;/p&gt;
-&lt;p&gt;所以从中看出，常规做法的可读性极强，但是代码太过冗余，重复代码太多&lt;/p&gt;
-&lt;h2 id=&#34;render使用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#render使用&#34;&gt;#&lt;/a&gt; render 使用&lt;/h2&gt;
-&lt;pre&gt;&lt;code class=&#34;language-vue&#34;&gt;&amp;lt;template&amp;gt;
-  &amp;lt;div class=&amp;quot;wrapper&amp;quot;&amp;gt;
-    &amp;lt;div  
-      v-for=&amp;quot;item in item&amp;quot;
-      :key=&amp;quot;item.id&amp;quot;&amp;gt;
-      &amp;lt;business-component :item=&amp;quot;item&amp;quot;/&amp;gt;
-    &amp;lt;/div&amp;gt;
-  &amp;lt;/div&amp;gt;
-&amp;lt;/template&amp;gt;
-
-&amp;lt;script&amp;gt;
-  import &#39;@/utils/renderHandle.js&#39;
-  export default &amp;#123;
-    data()&amp;#123;
-      return &amp;#123;
-        item:[
-          &amp;#123;
-            id:&#39;1&#39;
-            type:&#39;input&#39;
-          &amp;#125;,
-          &amp;#123;
-            id:&#39;2&#39;
-            type:&#39;select&#39;
-          &amp;#125;
-        ]
-      &amp;#125;
-    &amp;#125;
-  &amp;#125;
-&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;figure class=&#34;highlight js&#34;&gt;&lt;figcaption data-lang=&#34;JavaScript&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Vue&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;component&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;business-component&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token function&#34;&gt;render&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token parameter&#34;&gt;h&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;context&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;const&lt;/span&gt; item &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; context&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;props&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;item&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;item &lt;span class=&#34;token operator&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; item&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;type&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      &lt;span class=&#34;token keyword&#34;&gt;try&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token keyword&#34;&gt;const&lt;/span&gt; component &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token template-string&#34;&gt;&lt;span class=&#34;token template-punctuation string&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;@/components/&lt;/span&gt;&lt;span class=&#34;token interpolation&#34;&gt;&lt;span class=&#34;token interpolation-punctuation punctuation&#34;&gt;$&amp;#123;&lt;/span&gt;type&lt;span class=&#34;token interpolation-punctuation punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;.vue&lt;/span&gt;&lt;span class=&#34;token template-punctuation string&#34;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;component&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;          &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;h&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;component&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;context&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;catch&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;error&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        console&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;error----&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;error&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;h&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;div&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;从这两部分代码可以看出，我无论有多少个组件，都不用像常规做法那样疯狂注册，疯狂导入，所以显然这里用 render 的方法来渲染是很完美的，不过其实这并不完善，因为 &lt;code&gt;vue.componet&lt;/code&gt;  方法的第二个参数可并不仅仅只有 &lt;code&gt;render&lt;/code&gt;  方法，它还可以用很多其他属性，假设说我们需要在使用的时候去添加一下其他属性呢？总不可能直接在上面的这个 &lt;code&gt;business-component&lt;/code&gt;  的注册函数里面加吧，它只是个中介而已，负责转发，所以我们需要一个玄妙的注册函数来反传回去给我们去加东西&lt;/p&gt;
-&lt;figure class=&#34;highlight js&#34;&gt;&lt;figcaption data-lang=&#34;JavaScript&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Vue&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;component&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;business-component&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token function&#34;&gt;render&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token parameter&#34;&gt;h&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;context&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;const&lt;/span&gt; compoentKey &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; context&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;props&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;key&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;compoentKey&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;h&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;compoentKey&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;context&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;h&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;div&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;token function-variable function&#34;&gt;registerFn&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token parameter&#34;&gt;key&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;fn&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  Vue&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;component&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;key&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token function&#34;&gt;render&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token parameter&#34;&gt;h&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;context&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      &lt;span class=&#34;token keyword&#34;&gt;const&lt;/span&gt; item &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; context&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;props&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;item&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      &lt;span class=&#34;token keyword&#34;&gt;const&lt;/span&gt; obj &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;fn&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;context&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      &lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;item &lt;span class=&#34;token operator&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; item&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;type&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token keyword&#34;&gt;try&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;          &lt;span class=&#34;token keyword&#34;&gt;const&lt;/span&gt; component &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token template-string&#34;&gt;&lt;span class=&#34;token template-punctuation string&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;@/components/&lt;/span&gt;&lt;span class=&#34;token interpolation&#34;&gt;&lt;span class=&#34;token interpolation-punctuation punctuation&#34;&gt;$&amp;#123;&lt;/span&gt;type&lt;span class=&#34;token interpolation-punctuation punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;.vue&lt;/span&gt;&lt;span class=&#34;token template-punctuation string&#34;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;          &lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;component&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;20&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;h&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;component&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;obj&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;21&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;          &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;22&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;catch&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;error&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;23&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;          console&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;error----&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;error&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;24&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;25&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;26&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;h&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;div&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;27&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;28&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;29&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;pre&gt;&lt;code class=&#34;language-vue&#34;&gt;&amp;lt;template&amp;gt;
-  &amp;lt;div class=&amp;quot;wrapper&amp;quot;&amp;gt;
-    &amp;lt;div  
-      v-for=&amp;quot;item in item&amp;quot;
-      :key=&amp;quot;item.id&amp;quot;&amp;gt;
-      &amp;lt;business-component 
-        :item=&amp;quot;item&amp;quot;
-        :key=&amp;quot;key&amp;quot;/&amp;gt;
-    &amp;lt;/div&amp;gt;
-  &amp;lt;/div&amp;gt;
-&amp;lt;/template&amp;gt;
-
-&amp;lt;script&amp;gt;
-  import &amp;#123; registerFn &amp;#125; &#39;@/utils/renderHandle.js&#39;
-  export default &amp;#123;
-    data()&amp;#123;
-      return &amp;#123;
-        item:[
-          &amp;#123;
-            id:&#39;1&#39;
-            type:&#39;input&#39;
-          &amp;#125;,
-          &amp;#123;
-            id:&#39;2&#39;
-            type:&#39;select&#39;
-          &amp;#125;
-        ],
-        // 唯一的key
-        key:999
-      &amp;#125;
-    &amp;#125;,
-    created()&amp;#123;
-      this.register
-    &amp;#125;,
-    methods:&amp;#123;
-      register()&amp;#123;
-        registerFn(this.key,(context) =&amp;gt; &amp;#123;
-          const &amp;#123;
-            item
-          &amp;#125; = context.props
-          return &amp;#123;
-            item,
-            on: &amp;#123;
-              test1()&amp;#123;
-                console.log(&#39;我要监听了&#39;);
-              &amp;#125;
-            &amp;#125;,
-            off: &amp;#123;
-              test2()&amp;#123;
-                console.log(&#39;我不监听了&#39;);
-              &amp;#125;
-            &amp;#125;
-          &amp;#125;
-        &amp;#125;)
-      &amp;#125;
-    &amp;#125;
-  &amp;#125;
-&amp;lt;/script&amp;gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;结语&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#结语&#34;&gt;#&lt;/a&gt; 结语&lt;/h2&gt;
-&lt;p&gt;是不是很简单呢，其实 &lt;code&gt;render&lt;/code&gt;  也不是不能在 &lt;code&gt;vue&lt;/code&gt;  中用的，有些场景它确实很好用&lt;/p&gt;
-</content>
-        <category term="Vue" scheme="https://aaaa8880788.github.io/categories/vue/" />
-        <category term="Vue2" scheme="https://aaaa8880788.github.io/tags/Vue2/" />
-        <updated>2024-03-02T02:52:21.670Z</updated>
-    </entry>
-    <entry>
-        <id>https://aaaa8880788.github.io/vue/Vue3%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%BC%80%E5%8F%91%E9%98%B6%E6%AE%B5%E9%81%87%E5%88%B0%E8%B7%A8%E5%9F%9F/</id>
-        <title>Vue3中开发阶段跨域解决</title>
-        <link rel="alternate" href="https://aaaa8880788.github.io/vue/Vue3%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%BC%80%E5%8F%91%E9%98%B6%E6%AE%B5%E9%81%87%E5%88%B0%E8%B7%A8%E5%9F%9F/"/>
-        <content type="html">&lt;h1 id=&#34;vue3项目中开发阶段遇到跨域&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vue3项目中开发阶段遇到跨域&#34;&gt;#&lt;/a&gt; Vue3 项目中开发阶段遇到跨域&lt;/h1&gt;
-&lt;p&gt;可以在 vue.config.json 中配置&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;devServer: &amp;#123;
-  proxy:&amp;#123;
-    &#39;^/api&#39;:&amp;#123;
-      target:&#39;http://XX.XX.XX.XX:XXXX&#39;,
-      pathRewrite:&amp;#123;
-        &#39;^api&#39;:&#39;&#39;
-      &amp;#125;,
-      changeOrigin:true
-    &amp;#125;
-  &amp;#125;
-&amp;#125;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;module.exports = defineConfig(&amp;#123;
-  transpileDependencies: true,
-  outputDir: &#39;./build&#39;,
-  // 位置放这里,配置好后需要去把baseURL设置成 BASE_URL = &#39;/api&#39;,原本是BASE_URL = &#39;http://XX.XX.XX.XX:XXXX&#39;
-  devServer: &amp;#123;
-    proxy:&amp;#123;
-     &#39;^/api&#39;:&amp;#123;
-      target:&#39;http://XX.XX.XX.XX:XXXX&#39;,
-      pathRewrite:&amp;#123;
-        &#39;^api&#39;:&#39;&#39;
-      &amp;#125;,
-      changeOrigin:true
-    &amp;#125;
-  &amp;#125;
-&amp;#125;
-&amp;#125;)
-
-&lt;/code&gt;&lt;/pre&gt;
-</content>
-        <category term="Vue" scheme="https://aaaa8880788.github.io/categories/vue/" />
         <category term="Vue3" scheme="https://aaaa8880788.github.io/tags/Vue3/" />
-        <category term="跨域" scheme="https://aaaa8880788.github.io/tags/%E8%B7%A8%E5%9F%9F/" />
         <updated>2024-03-02T02:52:21.670Z</updated>
     </entry>
     <entry>
@@ -5392,6 +5242,156 @@ module.exports = defineConfig(&amp;#123;
         <updated>2024-03-02T02:52:21.670Z</updated>
     </entry>
     <entry>
+        <id>https://aaaa8880788.github.io/vue/Vue%E4%B8%ADrender%E7%9A%84%E4%BD%BF%E7%94%A8%E4%BB%B7%E5%80%BC/</id>
+        <title>Vue中render的使用价值</title>
+        <link rel="alternate" href="https://aaaa8880788.github.io/vue/Vue%E4%B8%ADrender%E7%9A%84%E4%BD%BF%E7%94%A8%E4%BB%B7%E5%80%BC/"/>
+        <content type="html">&lt;h2 id=&#34;vue中render的使用价值&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vue中render的使用价值&#34;&gt;#&lt;/a&gt;  &lt;code&gt;Vue&lt;/code&gt;  中 render 的使用价值&lt;/h2&gt;
+&lt;h2 id=&#34;场景&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#场景&#34;&gt;#&lt;/a&gt; 场景&lt;/h2&gt;
+&lt;p&gt;假设说是低代码平台配置好的表单渲染，亦或者说自己封装的一个表单组件，通过传配置项来渲染，一般我们会怎么做呢？&lt;/p&gt;
+&lt;h2 id=&#34;常规做法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#常规做法&#34;&gt;#&lt;/a&gt; 常规做法&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-vue&#34;&gt;&amp;lt;template&amp;gt;
+  &amp;lt;div class=&amp;quot;wrapper&amp;quot;&amp;gt;
+    &amp;lt;div  
+      v-for=&amp;quot;item in item&amp;quot;
+      :key=&amp;quot;item.id&amp;quot;&amp;gt;
+      &amp;lt;template v-if=&amp;quot;item.type === &#39;input&#39;&amp;quot;&amp;gt;
+        &amp;lt;input&amp;gt;&amp;lt;/input&amp;gt;
+      &amp;lt;/template&amp;gt;
+      &amp;lt;template v-else-if=&amp;quot;item.type === &#39;select&#39;&amp;quot;&amp;gt;
+        &amp;lt;select&amp;gt;&amp;lt;/select&amp;gt;
+      &amp;lt;/template&amp;gt;
+    &amp;lt;/div&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+
+&amp;lt;script&amp;gt;
+  import input from &#39;@/component/input&#39;
+  import select from &#39;@/component/select&#39;
+  export default &amp;#123;
+    data()&amp;#123;
+      return &amp;#123;
+        item:[
+          &amp;#123;
+            id:&#39;1&#39;
+            type:&#39;input&#39;
+          &amp;#125;,
+          &amp;#123;
+            id:&#39;2&#39;
+            type:&#39;select&#39;
+          &amp;#125;
+        ]
+      &amp;#125;
+    &amp;#125;,
+    components:&amp;#123;
+      input,
+      select
+    &amp;#125;
+  &amp;#125;
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;说明&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#说明&#34;&gt;#&lt;/a&gt; 说明&lt;/h2&gt;
+&lt;p&gt;从以上代码可以看出，如果说，我们有 30 个 &lt;code&gt;type&lt;/code&gt; ，那我们就必须用 &lt;code&gt;import&lt;/code&gt;  导入 30 个组件，在 &lt;code&gt;compoents&lt;/code&gt;  里面注册 30 个组件，在模板里面写 30 个 &lt;code&gt;template&lt;/code&gt; + &lt;code&gt;v-if&lt;/code&gt; ，越多代码只会越来越冗余，但是我们用 render 的方式来渲染呢？&lt;/p&gt;
+&lt;p&gt;所以从中看出，常规做法的可读性极强，但是代码太过冗余，重复代码太多&lt;/p&gt;
+&lt;h2 id=&#34;render使用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#render使用&#34;&gt;#&lt;/a&gt; render 使用&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-vue&#34;&gt;&amp;lt;template&amp;gt;
+  &amp;lt;div class=&amp;quot;wrapper&amp;quot;&amp;gt;
+    &amp;lt;div  
+      v-for=&amp;quot;item in item&amp;quot;
+      :key=&amp;quot;item.id&amp;quot;&amp;gt;
+      &amp;lt;business-component :item=&amp;quot;item&amp;quot;/&amp;gt;
+    &amp;lt;/div&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+
+&amp;lt;script&amp;gt;
+  import &#39;@/utils/renderHandle.js&#39;
+  export default &amp;#123;
+    data()&amp;#123;
+      return &amp;#123;
+        item:[
+          &amp;#123;
+            id:&#39;1&#39;
+            type:&#39;input&#39;
+          &amp;#125;,
+          &amp;#123;
+            id:&#39;2&#39;
+            type:&#39;select&#39;
+          &amp;#125;
+        ]
+      &amp;#125;
+    &amp;#125;
+  &amp;#125;
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure class=&#34;highlight js&#34;&gt;&lt;figcaption data-lang=&#34;JavaScript&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Vue&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;component&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;business-component&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token function&#34;&gt;render&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token parameter&#34;&gt;h&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;context&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;const&lt;/span&gt; item &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; context&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;props&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;item&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;item &lt;span class=&#34;token operator&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; item&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;type&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      &lt;span class=&#34;token keyword&#34;&gt;try&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token keyword&#34;&gt;const&lt;/span&gt; component &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token template-string&#34;&gt;&lt;span class=&#34;token template-punctuation string&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;@/components/&lt;/span&gt;&lt;span class=&#34;token interpolation&#34;&gt;&lt;span class=&#34;token interpolation-punctuation punctuation&#34;&gt;$&amp;#123;&lt;/span&gt;type&lt;span class=&#34;token interpolation-punctuation punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;.vue&lt;/span&gt;&lt;span class=&#34;token template-punctuation string&#34;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;component&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;          &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;h&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;component&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;context&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;catch&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;error&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        console&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;error----&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;error&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;h&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;div&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;从这两部分代码可以看出，我无论有多少个组件，都不用像常规做法那样疯狂注册，疯狂导入，所以显然这里用 render 的方法来渲染是很完美的，不过其实这并不完善，因为 &lt;code&gt;vue.componet&lt;/code&gt;  方法的第二个参数可并不仅仅只有 &lt;code&gt;render&lt;/code&gt;  方法，它还可以用很多其他属性，假设说我们需要在使用的时候去添加一下其他属性呢？总不可能直接在上面的这个 &lt;code&gt;business-component&lt;/code&gt;  的注册函数里面加吧，它只是个中介而已，负责转发，所以我们需要一个玄妙的注册函数来反传回去给我们去加东西&lt;/p&gt;
+&lt;figure class=&#34;highlight js&#34;&gt;&lt;figcaption data-lang=&#34;JavaScript&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Vue&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;component&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;business-component&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token function&#34;&gt;render&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token parameter&#34;&gt;h&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;context&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;const&lt;/span&gt; compoentKey &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; context&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;props&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;key&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;compoentKey&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;h&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;compoentKey&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;context&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;h&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;div&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;token function-variable function&#34;&gt;registerFn&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token parameter&#34;&gt;key&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;fn&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  Vue&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;component&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;key&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token function&#34;&gt;render&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token parameter&#34;&gt;h&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;context&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      &lt;span class=&#34;token keyword&#34;&gt;const&lt;/span&gt; item &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; context&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;props&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;item&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      &lt;span class=&#34;token keyword&#34;&gt;const&lt;/span&gt; obj &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;fn&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;context&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      &lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;item &lt;span class=&#34;token operator&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; item&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;type&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token keyword&#34;&gt;try&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;          &lt;span class=&#34;token keyword&#34;&gt;const&lt;/span&gt; component &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token template-string&#34;&gt;&lt;span class=&#34;token template-punctuation string&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;@/components/&lt;/span&gt;&lt;span class=&#34;token interpolation&#34;&gt;&lt;span class=&#34;token interpolation-punctuation punctuation&#34;&gt;$&amp;#123;&lt;/span&gt;type&lt;span class=&#34;token interpolation-punctuation punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;.vue&lt;/span&gt;&lt;span class=&#34;token template-punctuation string&#34;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;          &lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;component&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;20&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;h&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;component&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;obj&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;21&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;          &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;22&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;catch&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;error&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;23&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;          console&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;error----&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;error&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;24&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;25&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;26&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;h&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;div&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;27&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;28&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;29&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;pre&gt;&lt;code class=&#34;language-vue&#34;&gt;&amp;lt;template&amp;gt;
+  &amp;lt;div class=&amp;quot;wrapper&amp;quot;&amp;gt;
+    &amp;lt;div  
+      v-for=&amp;quot;item in item&amp;quot;
+      :key=&amp;quot;item.id&amp;quot;&amp;gt;
+      &amp;lt;business-component 
+        :item=&amp;quot;item&amp;quot;
+        :key=&amp;quot;key&amp;quot;/&amp;gt;
+    &amp;lt;/div&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+
+&amp;lt;script&amp;gt;
+  import &amp;#123; registerFn &amp;#125; &#39;@/utils/renderHandle.js&#39;
+  export default &amp;#123;
+    data()&amp;#123;
+      return &amp;#123;
+        item:[
+          &amp;#123;
+            id:&#39;1&#39;
+            type:&#39;input&#39;
+          &amp;#125;,
+          &amp;#123;
+            id:&#39;2&#39;
+            type:&#39;select&#39;
+          &amp;#125;
+        ],
+        // 唯一的key
+        key:999
+      &amp;#125;
+    &amp;#125;,
+    created()&amp;#123;
+      this.register
+    &amp;#125;,
+    methods:&amp;#123;
+      register()&amp;#123;
+        registerFn(this.key,(context) =&amp;gt; &amp;#123;
+          const &amp;#123;
+            item
+          &amp;#125; = context.props
+          return &amp;#123;
+            item,
+            on: &amp;#123;
+              test1()&amp;#123;
+                console.log(&#39;我要监听了&#39;);
+              &amp;#125;
+            &amp;#125;,
+            off: &amp;#123;
+              test2()&amp;#123;
+                console.log(&#39;我不监听了&#39;);
+              &amp;#125;
+            &amp;#125;
+          &amp;#125;
+        &amp;#125;)
+      &amp;#125;
+    &amp;#125;
+  &amp;#125;
+&amp;lt;/script&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;结语&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#结语&#34;&gt;#&lt;/a&gt; 结语&lt;/h2&gt;
+&lt;p&gt;是不是很简单呢，其实 &lt;code&gt;render&lt;/code&gt;  也不是不能在 &lt;code&gt;vue&lt;/code&gt;  中用的，有些场景它确实很好用&lt;/p&gt;
+</content>
+        <category term="Vue" scheme="https://aaaa8880788.github.io/categories/vue/" />
+        <category term="Vue2" scheme="https://aaaa8880788.github.io/tags/Vue2/" />
+        <updated>2024-03-02T02:52:21.670Z</updated>
+    </entry>
+    <entry>
         <id>https://aaaa8880788.github.io/vue/Vue3%E4%B8%ADts%E7%9A%84%E5%B7%A7%E5%A6%99%E4%BD%BF%E7%94%A8/</id>
         <title>Vue3中Ts的使用技巧</title>
         <link rel="alternate" href="https://aaaa8880788.github.io/vue/Vue3%E4%B8%ADts%E7%9A%84%E5%B7%A7%E5%A6%99%E4%BD%BF%E7%94%A8/"/>
@@ -5470,8 +5470,8 @@ console.log(userMenus)
 &lt;/code&gt;&lt;/pre&gt;
 </content>
         <category term="Vue" scheme="https://aaaa8880788.github.io/categories/vue/" />
-        <category term="Vue3" scheme="https://aaaa8880788.github.io/tags/Vue3/" />
         <category term="TypeScript" scheme="https://aaaa8880788.github.io/tags/TypeScript/" />
+        <category term="Vue3" scheme="https://aaaa8880788.github.io/tags/Vue3/" />
         <category term="Vuex" scheme="https://aaaa8880788.github.io/tags/Vuex/" />
         <updated>2024-03-02T02:52:21.669Z</updated>
     </entry>
@@ -5713,8 +5713,8 @@ const getItemsSection = (id: number) =&amp;gt; &amp;#123;
 &lt;/code&gt;&lt;/pre&gt;
 </content>
         <category term="Vue" scheme="https://aaaa8880788.github.io/categories/vue/" />
-        <category term="Vue3" scheme="https://aaaa8880788.github.io/tags/Vue3/" />
         <category term="TypeScript" scheme="https://aaaa8880788.github.io/tags/TypeScript/" />
+        <category term="Vue3" scheme="https://aaaa8880788.github.io/tags/Vue3/" />
         <updated>2024-03-02T02:52:21.668Z</updated>
     </entry>
     <entry>
@@ -5754,8 +5754,8 @@ const getItemsSection = (id: number) =&amp;gt; &amp;#123;
 &lt;p&gt;在 src 下的 main.ts 中&lt;/p&gt;
 &lt;figure class=&#34;highlight typescript&#34;&gt;&lt;figcaption data-lang=&#34;typescript&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt; createApp &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;vue&#39;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; App &lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;./App.vue&#39;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; router &lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;./router&#39;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; store &lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;./store&#39;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt; nwRequest &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;./network&#39;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;const&lt;/span&gt; app &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;createApp&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;App&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;app&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;use&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;router&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;app&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;use&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;store&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;app&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;mount&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;#app&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;nwRequest&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;post&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    url&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;/login&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    data&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      name&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;哈哈哈&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      password&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;123456&#39;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;20&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;21&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;22&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;then&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;res&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;23&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token builtin&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;res&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;24&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
         <category term="Vue" scheme="https://aaaa8880788.github.io/categories/vue/" />
-        <category term="Vue3" scheme="https://aaaa8880788.github.io/tags/Vue3/" />
         <category term="TypeScript" scheme="https://aaaa8880788.github.io/tags/TypeScript/" />
+        <category term="Vue3" scheme="https://aaaa8880788.github.io/tags/Vue3/" />
         <category term="Axios" scheme="https://aaaa8880788.github.io/tags/Axios/" />
         <updated>2024-03-02T02:52:21.668Z</updated>
     </entry>
@@ -7665,8 +7665,8 @@ const handleCreateClick = (pageNameInChinese: any) =&amp;gt; &amp;#123;
 &lt;p&gt;刚学会的代码思路与写法，花了一天整理，主要还是自己记录一下，颇有收获，感觉大佬分享使我进步～虽然还是很菜....&lt;/p&gt;
 </content>
         <category term="Vue" scheme="https://aaaa8880788.github.io/categories/vue/" />
-        <category term="Vue3" scheme="https://aaaa8880788.github.io/tags/Vue3/" />
         <category term="TypeScript" scheme="https://aaaa8880788.github.io/tags/TypeScript/" />
+        <category term="Vue3" scheme="https://aaaa8880788.github.io/tags/Vue3/" />
         <category term="Element Plus" scheme="https://aaaa8880788.github.io/tags/Element-Plus/" />
         <updated>2024-03-02T02:52:21.667Z</updated>
     </entry>
